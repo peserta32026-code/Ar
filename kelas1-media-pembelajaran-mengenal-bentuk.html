@@ -1,0 +1,2389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mengenal Bentuk - Media Pembelajaran Matematika Kelas 1 SD</title>
+<style>
+:root{
+  --ink:#3b3b64;
+  --ink-soft:#6a6a96;
+  --sky1:#aee6ff;
+  --sky2:#e9f9ff;
+  --hill1:#8fe07a;
+  --hill2:#6fd06a;
+  --pink:#ff8fb1;
+  --pink-d:#f5628f;
+  --yellow:#ffd23f;
+  --yellow-d:#f0b81f;
+  --blue:#6ec6ff;
+  --blue-d:#3fa9f5;
+  --green:#7ed957;
+  --green-d:#5cbb3c;
+  --purple:#b28dff;
+  --purple-d:#9670f0;
+  --orange:#ffab5e;
+  --orange-d:#f08c33;
+  --card:#ffffff;
+  --shadow:0 10px 0 rgba(59,59,100,.08), 0 18px 34px rgba(59,59,100,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Comic Sans MS","Comic Neue","Chalkboard SE","Marker Felt","Trebuchet MS",Verdana,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 46%,#f6fff2 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img,svg{display:block;max-width:100%}
+.hidden{display:none !important}
+
+/* ---------- decorative background ---------- */
+.sky-deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.cloud{position:absolute;opacity:.95;animation:drift linear infinite}
+.cloud.c1{top:7%;left:-160px;width:150px;animation-duration:52s}
+.cloud.c2{top:18%;left:-230px;width:210px;animation-duration:74s;animation-delay:-30s}
+.cloud.c3{top:32%;left:-130px;width:120px;animation-duration:64s;animation-delay:-12s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(calc(100vw + 260px))}}
+.hill{position:absolute;bottom:-60px;border-radius:50% 50% 0 0}
+.hill.h1{left:-12%;width:64%;height:210px;background:var(--hill1)}
+.hill.h2{right:-14%;width:70%;height:170px;background:var(--hill2);bottom:-70px}
+.hill.h3{left:26%;width:60%;height:130px;background:#a4eb8d;bottom:-72px}
+
+/* ---------- shell ---------- */
+#app{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:14px 14px 60px}
+
+/* ---------- header ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:#fff;border:4px solid #fff;border-radius:26px;
+  box-shadow:var(--shadow);padding:10px 14px;
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand .logo{width:54px;height:54px;flex:none;animation:bob 3s ease-in-out infinite}
+.brand h1{font-size:clamp(17px,3.4vw,24px);letter-spacing:.4px;line-height:1.05}
+.brand p{font-size:clamp(11px,2.2vw,13px);color:var(--ink-soft);font-weight:bold;margin-top:2px}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-6px) rotate(3deg)}}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.chip{
+  display:flex;align-items:center;gap:6px;background:#fff7d6;border:3px solid var(--yellow);
+  border-radius:999px;padding:6px 12px;font-weight:bold;font-size:15px;color:var(--ink);
+}
+.chip svg{width:20px;height:20px}
+.icon-btn{
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:var(--blue);border:3px solid var(--ink);box-shadow:0 4px 0 rgba(59,59,100,.35);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+.icon-btn.off{background:#d9d9e8}
+.icon-btn.music{background:var(--purple)}
+.icon-btn.music.off{background:#d9d9e8}
+.icon-btn:active{transform:translateY(4px);box-shadow:0 0 0 rgba(0,0,0,0)}
+.icon-btn svg{width:24px;height:24px}
+
+/* ---------- nav ---------- */
+.tabs{
+  display:flex;gap:8px;margin-top:14px;padding:6px;background:#fff;border-radius:22px;
+  border:4px solid #fff;box-shadow:var(--shadow);overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:1 1 auto;display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:10px 14px;border-radius:16px;font-weight:bold;font-size:15px;white-space:nowrap;
+  color:var(--ink-soft);border:3px solid transparent;transition:all .15s ease;
+}
+.tab svg{width:20px;height:20px}
+.tab:hover{background:#f1f7ff;color:var(--ink)}
+.tab.active{background:var(--yellow);border-color:var(--ink);color:var(--ink);box-shadow:0 4px 0 rgba(59,59,100,.3);transform:translateY(-2px)}
+
+/* ---------- sections ---------- */
+.sec{display:none;animation:popin .35s ease}
+.sec.active{display:block}
+@keyframes popin{from{opacity:0;transform:translateY(16px) scale(.985)}to{opacity:1;transform:none}}
+
+.card{
+  background:var(--card);border:4px solid #fff;border-radius:26px;
+  box-shadow:var(--shadow);padding:20px;
+}
+.card-title{display:flex;align-items:center;gap:10px;font-size:clamp(18px,3.6vw,23px);margin-bottom:6px}
+.card-title .badge{
+  width:36px;height:36px;border-radius:12px;display:grid;place-items:center;flex:none;
+  background:var(--yellow);border:3px solid var(--ink);
+}
+.card-title .badge svg{width:20px;height:20px}
+.sub{color:var(--ink-soft);font-weight:bold;font-size:15px;line-height:1.5}
+.stack{display:flex;flex-direction:column;gap:16px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;border-radius:999px;font-weight:bold;font-size:16px;color:var(--ink);
+  border:3px solid var(--ink);box-shadow:0 6px 0 rgba(59,59,100,.45);
+  transition:transform .1s ease, box-shadow .1s ease, filter .15s;
+  background:#fff;
+}
+.btn svg{width:20px;height:20px}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(6px);box-shadow:0 0 0 rgba(0,0,0,0)}
+.btn.primary{background:var(--pink);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.15)}
+.btn.blue{background:var(--blue)}
+.btn.yellow{background:var(--yellow)}
+.btn.green{background:var(--green)}
+.btn.purple{background:var(--purple);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.15)}
+.btn.big{font-size:18px;padding:16px 30px}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+
+/* ---------- home ---------- */
+.hero{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:center;
+  background:linear-gradient(135deg,#fff 0%,#fdf3ff 100%);
+}
+.hero h2{font-size:clamp(24px,5vw,36px);line-height:1.15;margin-bottom:10px}
+.hero h2 .hl{color:var(--pink-d);text-decoration:underline;text-decoration-color:var(--yellow);text-decoration-thickness:5px;text-underline-offset:4px}
+.hero p{font-size:16px;line-height:1.6;color:var(--ink-soft);font-weight:bold;margin-bottom:16px}
+.hero-art{position:relative;display:grid;place-items:center;min-height:230px}
+.hero-art .mascot{width:min(250px,70%);animation:bob 3.4s ease-in-out infinite}
+.floaty{position:absolute;width:56px;animation:bob 3s ease-in-out infinite}
+.floaty.f1{top:6%;left:6%;animation-delay:.2s}
+.floaty.f2{top:12%;right:4%;width:48px;animation-delay:.9s}
+.floaty.f3{bottom:8%;left:12%;width:50px;animation-delay:1.4s}
+.floaty.f4{bottom:4%;right:10%;width:44px;animation-delay:.6s}
+
+.shape-links{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.shape-link{
+  background:#fff;border:4px solid #fff;border-radius:22px;box-shadow:var(--shadow);
+  padding:14px 10px;text-align:center;transition:transform .15s ease;
+}
+.shape-link:hover{transform:translateY(-6px) rotate(-1deg)}
+.shape-link .art{width:84px;height:84px;margin:0 auto 8px}
+.shape-link b{font-size:16px;display:block}
+.shape-link span{font-size:12.5px;color:var(--ink-soft);font-weight:bold}
+.shape-link.leng{background:#ffeef4}
+.shape-link.segi3{background:#eaf7ff}
+.shape-link.segi4{background:#fff8dd}
+
+.story{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;background:linear-gradient(135deg,#eafff0,#f7fff2)}
+.story .pic{width:120px}
+.story h3{font-size:19px;margin-bottom:6px}
+.story p{font-size:15px;color:var(--ink-soft);font-weight:bold;line-height:1.55}
+
+/* ---------- learn ---------- */
+.pills{display:flex;gap:10px;flex-wrap:wrap}
+.pill{
+  padding:11px 18px;border-radius:999px;font-weight:bold;font-size:15px;background:#fff;
+  border:3px solid #dcdcf0;color:var(--ink-soft);transition:all .15s;box-shadow:0 4px 0 rgba(59,59,100,.12);
+}
+.pill:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(59,59,100,.12)}
+.pill.active{border-color:var(--ink);color:var(--ink)}
+.pill.active.p-leng{background:var(--pink);color:#fff}
+.pill.active.p-s3{background:var(--blue);color:#fff}
+.pill.active.p-s4{background:var(--yellow)}
+
+.learn-head{
+  display:flex;gap:14px;align-items:center;border-radius:22px;padding:14px;margin-top:14px;
+  border:4px dashed #ffd6e4;background:#fffafc;
+}
+.learn-head .big{width:96px;height:96px;flex:none}
+.learn-head h3{font-size:21px;margin-bottom:4px}
+.learn-head p{font-size:15px;font-weight:bold;color:var(--ink-soft);line-height:1.5}
+.examples{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.ex-card{
+  background:#fff;border:4px solid #fff;border-radius:22px;box-shadow:var(--shadow);
+  padding:12px 8px 10px;text-align:center;cursor:pointer;transition:transform .15s ease, border-color .15s;
+  position:relative;
+}
+.ex-card:hover{transform:translateY(-6px) rotate(1.2deg);border-color:var(--yellow)}
+.ex-card:active{transform:scale(.96)}
+.ex-card .art{width:100%;height:96px}
+.ex-card b{display:block;font-size:15px;margin-top:6px}
+.ex-card small{color:var(--ink-soft);font-weight:bold;font-size:12px}
+.ex-card .hear{
+  position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;
+  background:var(--blue);border:2.5px solid var(--ink);display:grid;place-items:center;
+}
+.ex-card .hear svg{width:15px;height:15px}
+.ex-card.picked{border-color:var(--green);background:#f2fff0}
+
+/* ---------- simulation shared ---------- */
+.sim-sub{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.stage-card{position:relative;overflow:hidden}
+.stage-toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.goal{
+  display:inline-flex;align-items:center;gap:8px;background:var(--purple);color:#fff;
+  padding:9px 18px;border-radius:999px;font-weight:bold;font-size:15.5px;border:3px solid var(--ink);
+  box-shadow:0 4px 0 rgba(59,59,100,.35);text-shadow:0 1px 0 rgba(0,0,0,.2);
+}
+.compose-stage{
+  position:relative;width:100%;height:340px;margin-top:14px;border-radius:22px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(255,255,255,.7) 0 6px, transparent 7px),
+    radial-gradient(circle at 78% 16%, rgba(255,255,255,.7) 0 5px, transparent 6px),
+    radial-gradient(circle at 60% 80%, rgba(255,255,255,.55) 0 5px, transparent 6px),
+    linear-gradient(180deg,#dff4ff 0%,#eafff3 100%);
+  border:4px solid #fff;box-shadow:inset 0 0 0 3px #cfeaff, var(--shadow);
+  touch-action:none;overflow:hidden;
+}
+.ghost{
+  position:absolute;border:4px dashed rgba(59,59,100,.45);border-radius:14px;
+  background:rgba(255,255,255,.5);
+}
+.ghost .slot{position:absolute;border:3px dashed rgba(59,59,100,.35);border-radius:8px}
+.ghost-label{
+  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+  background:#fff;border:3px solid var(--ink);border-radius:999px;padding:3px 12px;
+  font-size:13px;font-weight:bold;white-space:nowrap;box-shadow:0 3px 0 rgba(59,59,100,.25);
+}
+.piece{
+  position:absolute;left:0;top:0;width:130px;height:130px;cursor:grab;touch-action:none;
+  filter:drop-shadow(0 8px 6px rgba(59,59,100,.28));transition:filter .15s;
+  z-index:5;
+}
+.piece:active{cursor:grabbing}
+.piece.dragging{z-index:20;filter:drop-shadow(0 16px 10px rgba(59,59,100,.35)) scale(1.05)}
+.piece svg{width:100%;height:100%;pointer-events:none}
+.piece.placed{cursor:default}
+.merge-flash{
+  position:absolute;inset:0;display:grid;place-items:center;z-index:30;pointer-events:none;
+}
+.merge-badge{
+  background:#fff;border:4px solid var(--green);border-radius:22px;padding:14px 22px;text-align:center;
+  box-shadow:var(--shadow);animation:stamp .45s cubic-bezier(.2,1.6,.4,1);max-width:86%;
+}
+.merge-badge b{font-size:19px;display:block;color:var(--green-d)}
+.merge-badge span{font-size:14px;font-weight:bold;color:var(--ink-soft)}
+@keyframes stamp{from{transform:scale(.4) rotate(-6deg);opacity:0}to{transform:none;opacity:1}}
+.tray-hint{
+  position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
+  background:rgba(255,255,255,.9);border:3px solid var(--ink);border-radius:999px;
+  font-size:13.5px;font-weight:bold;padding:6px 14px;z-index:2;
+}
+
+/* ---------- sorting ---------- */
+.sort-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px}
+.progress{
+  flex:1;min-width:140px;height:18px;background:#eceaff;border:3px solid #d5d5f2;border-radius:999px;overflow:hidden;
+}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow));transition:width .4s ease;border-radius:999px}
+.score-tag{display:flex;align-items:center;gap:6px;font-weight:bold;background:#fff7d6;border:3px solid var(--yellow);border-radius:999px;padding:5px 12px}
+.score-tag svg{width:18px;height:18px}
+.sort-play{display:grid;grid-template-columns:170px 1fr;gap:16px;margin-top:14px;align-items:center}
+.draggable-obj{
+  background:#fff;border:4px solid var(--yellow);border-radius:24px;box-shadow:var(--shadow);
+  padding:10px;text-align:center;cursor:grab;touch-action:none;position:relative;z-index:10;
+  transition:transform .32s cubic-bezier(.3,1.4,.5,1), box-shadow .15s, opacity .3s;
+}
+.draggable-obj .art{height:110px;margin:0 auto}
+.draggable-obj b{display:block;font-size:15.5px;margin-top:4px}
+.draggable-obj.dragging{transition:none;cursor:grabbing;box-shadow:0 22px 34px rgba(59,59,100,.3);transform:scale(1.05) rotate(-2deg);z-index:60}
+.draggable-obj.flying{transition:transform .42s cubic-bezier(.3,1.4,.5,1), opacity .34s .06s;z-index:60}
+.baskets{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.basket{
+  width:150px;background:#fff;border:4px solid #fff;border-radius:24px;box-shadow:var(--shadow);
+  padding:10px 8px 12px;text-align:center;transition:transform .15s, border-color .15s, background .15s;
+}
+.basket .mouth{
+  height:96px;border-radius:18px 18px 14px 14px;display:grid;place-items:center;border:3px dashed #c9c9e4;
+  background:#f6f6ff;transition:all .15s;
+}
+.basket .mouth svg{width:66px;height:66px}
+.basket b{display:block;margin-top:8px;font-size:15.5px}
+.basket:hover{transform:translateY(-4px)}
+.basket.over{border-color:var(--green);background:#effff0;transform:scale(1.05)}
+.basket.over .mouth{border-color:var(--green);background:#dfffe4}
+.basket.good{border-color:var(--green);background:#effff0;animation:bounce .5s ease}
+.basket.bad{border-color:var(--pink-d);background:#fff0f5;animation:shake .45s ease}
+@keyframes bounce{0%,100%{transform:translateY(0)}30%{transform:translateY(-14px) scale(1.05)}60%{transform:translateY(0) scale(1.03)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(9px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.msg-bar{
+  margin-top:14px;min-height:54px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:#f4f4ff;border:3px dashed #d5d5f2;border-radius:18px;padding:10px 14px;
+  font-weight:bold;font-size:16px;text-align:center;color:var(--ink-soft);
+  transition:all .2s;
+}
+.msg-bar.ok{background:#eaffee;border-color:var(--green);color:var(--green-d)}
+.msg-bar.no{background:#fff0f5;border-color:var(--pink);color:var(--pink-d)}
+.result-panel{
+  margin-top:14px;text-align:center;background:linear-gradient(135deg,#fffbe8,#f0fff2);
+  border:4px solid var(--yellow);border-radius:24px;padding:22px 16px;animation:popin .4s ease;
+}
+.result-panel h3{font-size:26px;margin-bottom:6px}
+.result-panel p{font-weight:bold;color:var(--ink-soft);margin-bottom:14px}
+.stars-row{display:flex;justify-content:center;gap:8px;margin-bottom:14px}
+.stars-row svg{width:44px;height:44px;animation:stamp .5s cubic-bezier(.2,1.6,.4,1) backwards}
+.stars-row svg:nth-child(2){animation-delay:.12s}
+.stars-row svg:nth-child(3){animation-delay:.24s}
+
+/* ---------- count game ---------- */
+.count-wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;margin-top:14px;align-items:start}
+.figure-box{
+  background:#fff;border:4px solid #fff;border-radius:24px;box-shadow:var(--shadow);padding:10px;
+}
+.figure-box svg{width:100%;height:auto;border-radius:16px;background:linear-gradient(180deg,#e8f7ff,#f4fff0)}
+.q-card{background:#fff;border:4px solid var(--purple);border-radius:24px;box-shadow:var(--shadow);padding:18px;text-align:center}
+.q-card .q-tag{display:inline-block;background:var(--purple);color:#fff;font-weight:bold;font-size:13px;border-radius:999px;padding:4px 12px;border:2.5px solid var(--ink);margin-bottom:10px}
+.q-card h3{font-size:19px;line-height:1.35;margin-bottom:14px}
+.stepper{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px}
+.step-btn{
+  width:56px;height:56px;border-radius:50%;font-size:30px;font-weight:bold;border:3px solid var(--ink);
+  background:var(--blue);box-shadow:0 5px 0 rgba(59,59,100,.4);display:grid;place-items:center;line-height:1;
+}
+.step-btn:active{transform:translateY(5px);box-shadow:none}
+.step-btn.minus{background:var(--pink);color:#fff}
+.num-box{
+  min-width:86px;height:70px;border-radius:18px;background:#fff7d6;border:4px solid var(--yellow);
+  display:grid;place-items:center;font-size:34px;font-weight:bold;box-shadow:inset 0 -5px 0 rgba(240,184,31,.35);
+}
+.shape-key{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.key-chip{display:flex;align-items:center;gap:6px;background:#f4f4ff;border:3px solid #d9d9f5;border-radius:999px;padding:5px 12px;font-size:13.5px;font-weight:bold}
+.key-chip i{width:16px;height:16px;border-radius:5px;display:inline-block;border:2.5px solid var(--ink)}
+.key-chip i.k-leng{border-radius:50%;background:var(--pink)}
+.key-chip i.k-s3{background:var(--blue);clip-path:polygon(50% 0,100% 100%,0 100%);border:none;outline:2.5px solid var(--ink)}
+.key-chip i.k-s4{background:var(--yellow)}
+
+/* ---------- quiz ---------- */
+.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.dots{display:flex;gap:6px}
+.dots i{width:14px;height:14px;border-radius:50%;background:#e2e2f4;border:2.5px solid #c8c8e6;transition:all .2s}
+.dots i.on{background:var(--green);border-color:var(--green-d);transform:scale(1.15)}
+.dots i.now{background:var(--yellow);border-color:var(--yellow-d);transform:scale(1.3)}
+.q-visual{
+  margin:14px auto 0;max-width:340px;background:linear-gradient(180deg,#eefaff,#fff8e8);
+  border:4px solid #fff;box-shadow:inset 0 0 0 3px #d9f1ff;border-radius:22px;padding:12px;
+}
+.q-visual svg{width:100%;height:auto}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
+.choice{
+  background:#fff;border:4px solid #e6e6f6;border-radius:22px;box-shadow:var(--shadow);
+  padding:14px 10px;text-align:center;font-weight:bold;font-size:16px;transition:all .15s;
+}
+.choice .art{height:92px;margin:0 auto 6px}
+.choice:hover{transform:translateY(-5px);border-color:var(--blue)}
+.choice:active{transform:scale(.97)}
+.choice.right{border-color:var(--green);background:#effff0;animation:bounce .5s}
+.choice.wrong{border-color:var(--pink-d);background:#fff0f5;animation:shake .45s}
+.num-choices{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.num-choice{
+  width:74px;height:74px;border-radius:22px;font-size:30px;font-weight:bold;background:#fff;
+  border:4px solid #e6e6f6;box-shadow:var(--shadow);transition:all .15s;
+}
+.num-choice:hover{transform:translateY(-5px);border-color:var(--blue)}
+.num-choice.right{border-color:var(--green);background:#effff0;animation:bounce .5s}
+.num-choice.wrong{border-color:var(--pink-d);background:#fff0f5;animation:shake .45s}
+.quiz-done{text-align:center;padding:8px 0}
+.quiz-done h3{font-size:30px;margin:10px 0 4px}
+.quiz-done .big-score{font-size:56px;font-weight:bold;color:var(--pink-d);line-height:1}
+.quiz-done p{font-weight:bold;color:var(--ink-soft);margin:8px 0 16px}
+.checklist{max-width:520px;margin:0 auto;text-align:left;background:#f9f9ff;border:4px dashed #d5d5f2;border-radius:22px;padding:16px 18px}
+.checklist h4{font-size:17px;margin-bottom:10px;text-align:center}
+.check-item{display:flex;align-items:center;gap:10px;padding:8px 4px;font-weight:bold;font-size:15px;cursor:pointer;border-radius:12px}
+.check-item:hover{background:#fff}
+.check-item .box{
+  width:26px;height:26px;border-radius:8px;border:3px solid var(--ink);background:#fff;flex:none;
+  display:grid;place-items:center;transition:all .15s;
+}
+.check-item .box svg{width:16px;height:16px;opacity:0;transform:scale(.4);transition:all .18s}
+.check-item.on .box{background:var(--green)}
+.check-item.on .box svg{opacity:1;transform:none}
+
+/* ---------- confetti ---------- */
+.confetti{position:fixed;pointer-events:none;z-index:999;width:14px;height:14px}
+
+/* ---------- footer ---------- */
+.foot{
+  text-align:center;margin-top:26px;font-size:13px;font-weight:bold;color:var(--ink-soft);
+  background:rgba(255,255,255,.75);border-radius:999px;padding:10px 16px;border:3px dashed #d8eefc;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .hero .btn-row{justify-content:center}
+  .examples{grid-template-columns:repeat(2,1fr)}
+  .count-wrap{grid-template-columns:1fr}
+  .sort-play{grid-template-columns:1fr;justify-items:center}
+  .draggable-obj{width:170px}
+  .story{grid-template-columns:1fr;text-align:center;justify-items:center}
+}
+@media (max-width:560px){
+  .shape-links{grid-template-columns:1fr}
+  .tab{font-size:13.5px;padding:9px 10px;gap:5px}
+  .tab svg{width:17px;height:17px}
+  .brand .logo{width:44px;height:44px}
+  .chip{padding:5px 9px;font-size:13px}
+  .icon-btn{width:40px;height:40px}
+  .basket{width:128px}
+  .compose-stage{height:300px}
+  .piece{width:104px;height:104px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= SVG LIBRARY (lucu, tanpa emoji) ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- logo maskot: kucing bulat -->
+    <symbol id="mascot" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="152" rx="56" ry="40" fill="#ffb35e"/>
+      <ellipse cx="100" cy="158" rx="32" ry="24" fill="#ffe9cf"/>
+      <path d="M54 58 L46 14 L90 40 Z" fill="#ffb35e" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M146 58 L154 14 L110 40 Z" fill="#ffb35e" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M58 50 L54 28 L78 42 Z" fill="#ff9fb6"/>
+      <path d="M142 50 L146 28 L122 42 Z" fill="#ff9fb6"/>
+      <circle cx="100" cy="88" r="54" fill="#ffc178" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="80" cy="84" r="8.5" fill="#3b3b64"/>
+      <circle cx="120" cy="84" r="8.5" fill="#3b3b64"/>
+      <circle cx="83" cy="81" r="3" fill="#ffffff"/>
+      <circle cx="123" cy="81" r="3" fill="#ffffff"/>
+      <ellipse cx="65" cy="99" rx="9" ry="6" fill="#ff8fb1" opacity=".8"/>
+      <ellipse cx="135" cy="99" rx="9" ry="6" fill="#ff8fb1" opacity=".8"/>
+      <path d="M95 96 h10 l-5 6 z" fill="#f5628f"/>
+      <path d="M100 102 q-9 11 -18 3 M100 102 q9 11 18 3" stroke="#3b3b64" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M58 88 l-16 -4 M58 96 l-16 4 M142 88 l16 -4 M142 96 l16 4" stroke="#3b3b64" stroke-width="3.5" stroke-linecap="round"/>
+      <ellipse cx="72" cy="188" rx="17" ry="11" fill="#ffc178" stroke="#3b3b64" stroke-width="4"/>
+      <ellipse cx="128" cy="188" rx="17" ry="11" fill="#ffc178" stroke="#3b3b64" stroke-width="4"/>
+      <path d="M148 138 q22 -6 26 -26" stroke="#3b3b64" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="176" cy="106" r="13" fill="#ffd23f" stroke="#3b3b64" stroke-width="4.5"/>
+    </symbol>
+
+    <!-- tokoh bentuk bercerita -->
+    <symbol id="sh-leng" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="43" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="38" cy="45" r="5.5" fill="#3b3b64"/>
+      <circle cx="62" cy="45" r="5.5" fill="#3b3b64"/>
+      <circle cx="40" cy="43" r="2" fill="#fff"/>
+      <circle cx="64" cy="43" r="2" fill="#fff"/>
+      <path d="M40 62 q10 10 20 0" stroke="#3b3b64" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="30" cy="57" rx="6" ry="4" fill="#f5628f" opacity=".7"/>
+      <ellipse cx="70" cy="57" rx="6" ry="4" fill="#f5628f" opacity=".7"/>
+    </symbol>
+    <symbol id="sh-segi3" viewBox="0 0 100 100">
+      <path d="M50 9 L93 87 L7 87 Z" fill="#6ec6ff" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="40" cy="64" r="5" fill="#3b3b64"/>
+      <circle cx="60" cy="64" r="5" fill="#3b3b64"/>
+      <circle cx="42" cy="62" r="1.8" fill="#fff"/>
+      <circle cx="62" cy="62" r="1.8" fill="#fff"/>
+      <path d="M43 76 q7 7 14 0" stroke="#3b3b64" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="31" cy="74" rx="5" ry="3.4" fill="#f5628f" opacity=".7"/>
+      <ellipse cx="69" cy="74" rx="5" ry="3.4" fill="#f5628f" opacity=".7"/>
+    </symbol>
+    <symbol id="sh-segi4" viewBox="0 0 100 100">
+      <rect x="9" y="9" width="82" height="82" rx="16" fill="#ffd23f" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="37" cy="45" r="5.5" fill="#3b3b64"/>
+      <circle cx="63" cy="45" r="5.5" fill="#3b3b64"/>
+      <circle cx="39" cy="43" r="2" fill="#fff"/>
+      <circle cx="65" cy="43" r="2" fill="#fff"/>
+      <path d="M40 62 q10 10 20 0" stroke="#3b3b64" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="29" cy="57" rx="6" ry="4" fill="#f5628f" opacity=".7"/>
+      <ellipse cx="71" cy="57" rx="6" ry="4" fill="#f5628f" opacity=".7"/>
+    </symbol>
+
+    <!-- benda bentuk lengkung -->
+    <symbol id="ob-telur" viewBox="0 0 100 100">
+      <path d="M50 9 C70 9 84 40 84 62 C84 83 69 94 50 94 C31 94 16 83 16 62 C16 40 30 9 50 9 Z" fill="#fff6e2" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M34 44 q6 -14 16 -18" stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"/>
+      <circle cx="40" cy="60" r="4" fill="#3b3b64"/><circle cx="60" cy="60" r="4" fill="#3b3b64"/>
+      <path d="M44 72 q6 6 12 0" stroke="#3b3b64" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-piring" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="42" fill="#eaf6ff" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="50" cy="50" r="27" fill="#ffffff" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="42" cy="46" r="3.4" fill="#3b3b64"/><circle cx="58" cy="46" r="3.4" fill="#3b3b64"/>
+      <path d="M44 56 q6 6 12 0" stroke="#3b3b64" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-melon" viewBox="0 0 100 100">
+      <circle cx="50" cy="52" r="41" fill="#7ed957" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M28 20 q6 30 4 62 M50 11 q-5 40 0 82 M72 20 q-6 30 -4 62" stroke="#4fae33" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="11" r="6" fill="#4fae33" stroke="#3b3b64" stroke-width="4"/>
+    </symbol>
+    <symbol id="ob-jam" viewBox="0 0 100 100">
+      <circle cx="50" cy="52" r="41" fill="#fff9e8" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="50" cy="52" r="32" fill="#ffffff" stroke="#3b3b64" stroke-width="3.5"/>
+      <path d="M50 52 L50 32 M50 52 L66 60" stroke="#3b3b64" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="50" cy="52" r="4.5" fill="#f5628f" stroke="#3b3b64" stroke-width="2.5"/>
+      <path d="M50 15 l0 6 M87 52 l-6 0 M50 89 l0 -6 M13 52 l6 0" stroke="#3b3b64" stroke-width="4" stroke-linecap="round"/>
+      <path d="M36 24 a22 22 0 0 1 28 0" fill="none" stroke="#ffab5e" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- benda segitiga -->
+    <symbol id="ob-penggaris3" viewBox="0 0 100 100">
+      <path d="M50 10 L92 86 L8 86 Z" fill="#b28dff" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 36 L73 77 L27 77 Z" fill="#ffffff" stroke="#3b3b64" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M22 78 l6 -8 M34 78 l5 -8 M60 78 l-4 -8" stroke="#3b3b64" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-lupis" viewBox="0 0 100 100">
+      <path d="M50 12 L90 86 L10 86 Z" fill="#4fae33" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 34 L74 78 L26 78 Z" fill="#f7e3a1" stroke="#3b3b64" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M50 12 L50 86" stroke="#2f8f28" stroke-width="3.5"/>
+      <circle cx="50" cy="24" r="5" fill="#8b5a2b" stroke="#3b3b64" stroke-width="3"/>
+    </symbol>
+    <symbol id="ob-tenda" viewBox="0 0 100 100">
+      <path d="M50 10 L92 86 L8 86 Z" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 40 L70 86 L30 86 Z" fill="#ffd9e5" stroke="#3b3b64" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M50 40 L50 86" stroke="#3b3b64" stroke-width="3.5"/>
+      <path d="M50 10 L50 2 L66 7 L50 12" fill="#ffd23f" stroke="#3b3b64" stroke-width="3" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ob-atap" viewBox="0 0 100 100">
+      <path d="M50 14 L94 84 L6 84 Z" fill="#ffab5e" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M24 70 h52 M34 54 h32" stroke="#e07f2b" stroke-width="5" stroke-linecap="round"/>
+      <path d="M6 84 h88" stroke="#3b3b64" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- benda segi empat -->
+    <symbol id="ob-pintu" viewBox="0 0 100 100">
+      <rect x="20" y="8" width="60" height="84" rx="8" fill="#b28dff" stroke="#3b3b64" stroke-width="5"/>
+      <rect x="30" y="18" width="40" height="30" rx="5" fill="#cbb4ff" stroke="#3b3b64" stroke-width="3.5"/>
+      <rect x="30" y="56" width="40" height="26" rx="5" fill="#cbb4ff" stroke="#3b3b64" stroke-width="3.5"/>
+      <circle cx="64" cy="52" r="5" fill="#ffd23f" stroke="#3b3b64" stroke-width="3"/>
+    </symbol>
+    <symbol id="ob-jendela" viewBox="0 0 100 100">
+      <rect x="12" y="16" width="76" height="68" rx="8" fill="#dff3ff" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M50 16 v68 M12 50 h76" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M20 76 q10 -12 22 -2 q10 10 18 -4 q8 -12 16 -2" stroke="#9fd7ff" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="74" cy="30" r="7" fill="#ffd23f" stroke="#3b3b64" stroke-width="3.5"/>
+    </symbol>
+    <symbol id="ob-buku" viewBox="0 0 100 100">
+      <rect x="14" y="14" width="72" height="72" rx="8" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5"/>
+      <rect x="26" y="14" width="10" height="72" fill="#f5628f" stroke="#3b3b64" stroke-width="4"/>
+      <path d="M46 36 h30 M46 50 h30 M46 64 h22" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-bingkai" viewBox="0 0 100 100">
+      <rect x="10" y="16" width="80" height="68" rx="8" fill="#ffd23f" stroke="#3b3b64" stroke-width="5"/>
+      <rect x="22" y="27" width="56" height="46" rx="4" fill="#eaf9ff" stroke="#3b3b64" stroke-width="4"/>
+      <path d="M26 69 L44 46 L56 62 L64 54 L74 69 Z" fill="#7ed957" stroke="#3b3b64" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="66" cy="38" r="6" fill="#ffab5e" stroke="#3b3b64" stroke-width="3"/>
+    </symbol>
+
+    <!-- benda warna -->
+    <symbol id="ob-balon-merah" viewBox="0 0 100 100">
+      <ellipse cx="50" cy="40" rx="30" ry="34" fill="#f0517a" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M46 74 l4 8 l4 -8 z" fill="#f0517a" stroke="#3b3b64" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M50 82 q10 10 0 16" stroke="#3b3b64" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M36 30 q4 -10 14 -12" stroke="#ffb9cc" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-balon-kuning" viewBox="0 0 100 100">
+      <ellipse cx="50" cy="40" rx="30" ry="34" fill="#ffd23f" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M46 74 l4 8 l4 -8 z" fill="#ffd23f" stroke="#3b3b64" stroke-width="3.5" stroke-linejoin="round"/>
+      <path d="M50 82 q-10 10 0 16" stroke="#3b3b64" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <path d="M36 30 q4 -10 14 -12" stroke="#fff0b8" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-bunga" viewBox="0 0 100 100">
+      <path d="M50 58 v34" stroke="#4fae33" stroke-width="6" stroke-linecap="round"/>
+      <path d="M50 74 q-16 -4 -20 -16 q16 -2 20 12" fill="#7ed957" stroke="#3b3b64" stroke-width="3.5"/>
+      <circle cx="50" cy="30" r="12" fill="#ffd23f" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="50" cy="12" r="12" fill="#f0517a" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="68" cy="24" r="12" fill="#f0517a" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="62" cy="44" r="12" fill="#f0517a" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="38" cy="44" r="12" fill="#f0517a" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="32" cy="24" r="12" fill="#f0517a" stroke="#3b3b64" stroke-width="4"/>
+      <circle cx="50" cy="30" r="7" fill="#ffd23f"/>
+    </symbol>
+    <symbol id="ob-bintang" viewBox="0 0 100 100">
+      <path d="M50 8 L61 36 L92 39 L68 59 L75 90 L50 73 L25 90 L32 59 L8 39 L39 36 Z" fill="#ffd23f" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <circle cx="42" cy="50" r="4" fill="#3b3b64"/><circle cx="58" cy="50" r="4" fill="#3b3b64"/>
+      <path d="M44 60 q6 6 12 0" stroke="#3b3b64" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-pisang" viewBox="0 0 100 100">
+      <path d="M20 26 q6 46 48 54 q16 3 14 -10 q-2 -10 -16 -8 q-30 4 -42 -34 q-3 -10 -10 -6 q-6 3 -4 12" fill="#ffd23f" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M30 34 q10 34 42 42" stroke="#e0a913" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- benda ukuran & permainan -->
+    <symbol id="ob-apel" viewBox="0 0 100 100">
+      <path d="M50 30 q-10 -12 -24 -8 q-18 6 -18 32 q0 26 20 40 q10 7 22 3 q12 4 22 -3 q20 -14 20 -40 q0 -26 -18 -32 q-14 -4 -24 8" fill="#f0517a" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M50 30 q0 -12 8 -18" stroke="#8b5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M52 18 q14 -8 22 2 q-12 8 -22 -2" fill="#7ed957" stroke="#3b3b64" stroke-width="3.5"/>
+      <path d="M30 44 q4 -8 12 -9" stroke="#ff9fb6" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ob-bola" viewBox="0 0 100 100">
+      <circle cx="50" cy="52" r="41" fill="#6ec6ff" stroke="#3b3b64" stroke-width="5"/>
+      <path d="M11 44 q39 16 78 0 M50 11 q-20 40 0 82" stroke="#ffffff" stroke-width="5" fill="none"/>
+      <path d="M50 11 q20 40 0 82" stroke="#3fa9f5" stroke-width="4" fill="none"/>
+      <circle cx="50" cy="52" r="41" fill="none" stroke="#3b3b64" stroke-width="5"/>
+    </symbol>
+
+    <!-- isi keranjang -->
+    <symbol id="sw-merah" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="#f0517a" stroke="#3b3b64" stroke-width="6"/>
+      <path d="M32 38 q6 -8 14 -8" stroke="#ffb9cc" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="sw-kuning" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" fill="#ffd23f" stroke="#3b3b64" stroke-width="6"/>
+      <path d="M32 38 q6 -8 14 -8" stroke="#fff0b8" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="sz-besar" viewBox="0 0 100 100">
+      <rect x="12" y="12" width="76" height="76" rx="12" fill="#b28dff" stroke="#3b3b64" stroke-width="6"/>
+      <circle cx="40" cy="44" r="5" fill="#3b3b64"/><circle cx="60" cy="44" r="5" fill="#3b3b64"/>
+      <path d="M42 62 q8 8 16 0" stroke="#3b3b64" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="sz-kecil" viewBox="0 0 100 100">
+      <rect x="34" y="34" width="32" height="32" rx="7" fill="#b28dff" stroke="#3b3b64" stroke-width="5"/>
+      <circle cx="45" cy="47" r="2.6" fill="#3b3b64"/><circle cx="55" cy="47" r="2.6" fill="#3b3b64"/>
+      <path d="M46 56 q4 4 8 0" stroke="#3b3b64" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <path d="M22 78 h56" stroke="#c9c9e4" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 10"/>
+    </symbol>
+
+    <!-- ikon UI -->
+    <symbol id="ic-star" viewBox="0 0 24 24">
+      <path d="M12 2.6 l2.8 5.9 l6.4 .8 l-4.7 4.4 l1.2 6.4 L12 17 l-5.7 3.1 l1.2 -6.4 L2.8 9.3 l6.4 -.8 Z" fill="#ffd23f" stroke="#3b3b64" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24">
+      <path d="M4 13 l5.5 5.5 L20 6.5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-check-dark" viewBox="0 0 24 24">
+      <path d="M4 13 l5.5 5.5 L20 6.5" fill="none" stroke="#3b3b64" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-sound" viewBox="0 0 24 24">
+      <path d="M4 9 h4 l5 -4.5 v15 L8 15 H4 Z" fill="#ffffff" stroke="#3b3b64" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M16 8.5 q3 3.5 0 7 M18.5 6 q5.5 6 0 12" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-sound-off" viewBox="0 0 24 24">
+      <path d="M4 9 h4 l5 -4.5 v15 L8 15 H4 Z" fill="#ffffff" stroke="#3b3b64" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M16.5 9.5 l5 5 M21.5 9.5 l-5 5" stroke="#3b3b64" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-music" viewBox="0 0 24 24">
+      <path d="M9 18.5 V6 l10 -2.5 V16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linejoin="round"/>
+      <circle cx="6.5" cy="18.5" r="3.2" fill="#ffffff" stroke="#3b3b64" stroke-width="1.6"/>
+      <circle cx="16.5" cy="16" r="3.2" fill="#ffffff" stroke="#3b3b64" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ic-music-off" viewBox="0 0 24 24">
+      <path d="M9 18.5 V6 l10 -2.5 V16" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linejoin="round"/>
+      <circle cx="6.5" cy="18.5" r="3.2" fill="#ffffff" stroke="#3b3b64" stroke-width="1.6"/>
+      <circle cx="16.5" cy="16" r="3.2" fill="#ffffff" stroke="#3b3b64" stroke-width="1.6"/>
+      <path d="M3 3 L21 21" stroke="#3b3b64" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-home" viewBox="0 0 24 24">
+      <path d="M3.5 11.5 L12 4 l8.5 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 10.5 V20 h12 v-9.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M10 20 v-5 h4 v5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    </symbol>
+    <symbol id="ic-book" viewBox="0 0 24 24">
+      <path d="M4 5.5 q4 -2 8 0 q4 -2 8 0 V19 q-4 -2 -8 0 q-4 -2 -8 0 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M12 5.5 V19" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    </symbol>
+    <symbol id="ic-puzzle" viewBox="0 0 24 24">
+      <path d="M4 4 h7 a2.6 2.6 0 1 0 5 0 h4 v7 a2.6 2.6 0 1 1 0 5 v4 h-16 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-dice" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="4" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <circle cx="9" cy="9" r="1.6" fill="currentColor"/>
+      <circle cx="15" cy="15" r="1.6" fill="currentColor"/>
+      <circle cx="15" cy="9" r="1.6" fill="currentColor"/>
+      <circle cx="9" cy="15" r="1.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-medal" viewBox="0 0 24 24">
+      <circle cx="12" cy="14.5" r="6" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M8.5 9 L6 3 h4 l2 4 l2 -4 h4 L15.5 9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M12 12 l1 2.2 l2.4 .3 l-1.7 1.6 l.4 2.3 l-2.1 -1.1 l-2.1 1.1 l.4 -2.3 l-1.7 -1.6 l2.4 -.3 Z" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-hear" viewBox="0 0 24 24">
+      <path d="M4 9 h4 l5 -4.5 v15 L8 15 H4 Z" fill="#ffffff" stroke="#3b3b64" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M16 8.5 q3 3.5 0 7" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-hand" viewBox="0 0 24 24">
+      <path d="M9 12 V5.5 a1.6 1.6 0 1 1 3.2 0 V11 h.6 V4.2 a1.6 1.6 0 1 1 3.2 0 V11 h.6 V6.4 a1.6 1.6 0 1 1 3.2 0 V14 c0 4.5 -3 7.5 -7 7.5 c-3.6 0 -5.4 -1.8 -7.4 -5.4 L4.4 13 a1.7 1.7 0 0 1 2.7 -2 l1.9 2.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-target" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+    </symbol>
+
+    <!-- awan & matahari dekor -->
+    <symbol id="cloud-ico" viewBox="0 0 120 60">
+      <path d="M26 50 q-16 0 -16 -14 q0 -12 14 -13 q2 -16 20 -16 q14 0 19 11 q6 -5 15 -5 q17 0 20 15 q14 1 14 13 q0 11 -13 11 Z" fill="#ffffff" stroke="#cfeaff" stroke-width="3"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= LATAR ================= -->
+<div class="sky-deco" aria-hidden="true">
+  <svg class="cloud c1" viewBox="0 0 120 60"><use href="#cloud-ico"/></svg>
+  <svg class="cloud c2" viewBox="0 0 120 60"><use href="#cloud-ico"/></svg>
+  <svg class="cloud c3" viewBox="0 0 120 60"><use href="#cloud-ico"/></svg>
+  <div class="hill h1"></div>
+  <div class="hill h2"></div>
+  <div class="hill h3"></div>
+</div>
+
+<div id="app">
+
+  <!-- ================= HEADER ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 200 200"><use href="#mascot"/></svg>
+      <div>
+        <h1>Mengenal Bentuk</h1>
+        <p>Matematika Kelas 1 SD</p>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="chip" title="Bintang yang kamu kumpulkan">
+        <svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>
+        <span id="starTotal">0</span>
+      </div>
+      <button class="icon-btn" id="soundBtn" aria-label="Nyalakan atau matikan suara" title="Suara">
+        <svg class="i-on" viewBox="0 0 24 24"><use href="#ic-sound"/></svg>
+        <svg class="i-off hidden" viewBox="0 0 24 24"><use href="#ic-sound-off"/></svg>
+      </button>
+      <button class="icon-btn music" id="musicBtn" aria-label="Nyalakan atau matikan musik" title="Musik latar">
+        <svg class="i-on" viewBox="0 0 24 24"><use href="#ic-music"/></svg>
+        <svg class="i-off hidden" viewBox="0 0 24 24"><use href="#ic-music-off"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= NAV ================= -->
+  <nav class="tabs" id="nav">
+    <button class="tab active" data-sec="beranda"><svg viewBox="0 0 24 24"><use href="#ic-home"/></svg>Beranda</button>
+    <button class="tab" data-sec="belajar"><svg viewBox="0 0 24 24"><use href="#ic-book"/></svg>Belajar</button>
+    <button class="tab" data-sec="simulasi"><svg viewBox="0 0 24 24"><use href="#ic-puzzle"/></svg>Simulasi</button>
+    <button class="tab" data-sec="permainan"><svg viewBox="0 0 24 24"><use href="#ic-dice"/></svg>Permainan</button>
+    <button class="tab" data-sec="evaluasi"><svg viewBox="0 0 24 24"><use href="#ic-medal"/></svg>Evaluasi</button>
+  </nav>
+
+  <main>
+
+    <!-- ================= BERANDA ================= -->
+    <section class="sec active" id="sec-beranda">
+      <div class="stack">
+        <div class="card hero">
+          <div>
+            <h2>Halo, Teman! <br>Yuk kenali <span class="hl">bentuk</span> di sekitar kita</h2>
+            <p>Bersama Mia, kita akan belajar mengenal bentuk lengkung, segitiga, dan segi empat. Kita juga akan menyusun bentuk, mengelompokkan benda, dan bermain sambil belajar.</p>
+            <div class="btn-row" style="justify-content:flex-start">
+              <button class="btn primary big" data-go="belajar">Ayo Mulai Belajar</button>
+              <button class="btn yellow big" data-go="simulasi">Coba Simulasi</button>
+            </div>
+          </div>
+          <div class="hero-art">
+            <svg class="floaty f1" viewBox="0 0 100 100"><use href="#sh-leng"/></svg>
+            <svg class="floaty f2" viewBox="0 0 100 100"><use href="#sh-segi3"/></svg>
+            <svg class="floaty f3" viewBox="0 0 100 100"><use href="#sh-segi4"/></svg>
+            <svg class="floaty f4" viewBox="0 0 100 100"><use href="#ob-bintang"/></svg>
+            <svg class="mascot" viewBox="0 0 200 200"><use href="#mascot"/></svg>
+          </div>
+        </div>
+
+        <div class="shape-links">
+          <button class="shape-link leng" data-go="belajar" data-lcat="leng">
+            <svg class="art" viewBox="0 0 100 100"><use href="#sh-leng"/></svg>
+            <b>Bentuk Lengkung</b>
+            <span>Telur, piring, jam dinding</span>
+          </button>
+          <button class="shape-link segi3" data-go="belajar" data-lcat="segitiga">
+            <svg class="art" viewBox="0 0 100 100"><use href="#sh-segi3"/></svg>
+            <b>Segitiga</b>
+            <span>Tenda, kue lupis, penggaris</span>
+          </button>
+          <button class="shape-link segi4" data-go="belajar" data-lcat="segiempat">
+            <svg class="art" viewBox="0 0 100 100"><use href="#sh-segi4"/></svg>
+            <b>Segi empat</b>
+            <span>Pintu, jendela, buku</span>
+          </button>
+        </div>
+
+        <div class="card story">
+          <svg class="pic" viewBox="0 0 140 120" aria-hidden="true">
+            <rect x="8" y="64" width="124" height="44" rx="10" fill="#ff8fb1" stroke="#3b3b64" stroke-width="4"/>
+            <path d="M8 84 h124 M36 64 v44 M70 64 v44 M104 64 v44" stroke="#ffffff" stroke-width="4"/>
+            <rect x="30" y="34" width="44" height="30" rx="7" fill="#ffd23f" stroke="#3b3b64" stroke-width="4"/>
+            <path d="M30 46 h44 M48 34 v30" stroke="#3b3b64" stroke-width="3.5"/>
+            <circle cx="98" cy="46" r="16" fill="#7ed957" stroke="#3b3b64" stroke-width="4"/>
+            <path d="M98 30 q-4 16 0 32 M86 34 q8 12 0 24 M110 34 q-8 12 0 24" stroke="#4fae33" stroke-width="3" fill="none"/>
+            <path d="M18 54 l6 -18 l6 18 z" fill="#6ec6ff" stroke="#3b3b64" stroke-width="3.5" stroke-linejoin="round"/>
+            <circle cx="124" cy="24" r="12" fill="#ffab5e" stroke="#3b3b64" stroke-width="4"/>
+          </svg>
+          <div>
+            <h3>Piknik Bersama</h3>
+            <p>Enam sekawan sedang piknik di taman. Mereka saling berbagi makanan. Bentuk apa saja yang bisa kamu temukan di taman? Ayo kelompokkan benda berdasarkan bentuk, warna, dan ukurannya.</p>
+            <div class="btn-row" style="justify-content:flex-start;margin-top:12px">
+              <button class="btn green" data-go="simulasi" data-sim="kelompok">Ayo Mengelompokkan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BELAJAR ================= -->
+    <section class="sec" id="sec-belajar">
+      <div class="stack">
+        <div class="card">
+          <div class="card-title"><span class="badge"><svg viewBox="0 0 24 24"><use href="#ic-book"/></svg></span>Belajar Bentuk</div>
+          <p class="sub">Pilih salah satu bentuk di bawah ini. Ketuk gambar benda untuk mendengarkan namanya.</p>
+
+          <div class="pills" id="learnPills" style="margin-top:14px">
+            <button class="pill p-leng active" data-lcat="leng">Bentuk Lengkung</button>
+            <button class="pill p-s3" data-lcat="segitiga">Segitiga</button>
+            <button class="pill p-s4" data-lcat="segiempat">Segi empat</button>
+          </div>
+
+          <div class="learn-head" id="learnHead"></div>
+          <div class="examples" id="exGrid"></div>
+
+          <div class="btn-row" style="margin-top:18px">
+            <button class="btn blue" id="btnHearCat">
+              <svg viewBox="0 0 24 24"><use href="#ic-sound"/></svg>
+              Dengar Cerita Bentuk
+            </button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title"><span class="badge" style="background:var(--green)"><svg viewBox="0 0 24 24"><use href="#ic-target"/></svg></span>Ayo Coba di Sekitarmu</div>
+          <p class="sub">Ambil pensil dan kertas. Cari 3 benda di ruanganmu, lalu cocokkan bentuknya: yang lengkung, yang segitiga, atau yang segi empat. Ceritakan jawabanmu kepada temanmu.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SIMULASI ================= -->
+    <section class="sec" id="sec-simulasi">
+      <div class="stack">
+        <div class="sim-sub">
+          <button class="pill active" data-simtab="susun">Menyusun Bentuk</button>
+          <button class="pill" data-simtab="kelompok">Mengelompokkan Benda</button>
+        </div>
+
+        <!-- Simulasi A: menyusun & mengurai -->
+        <div class="card stage-card" id="sim-susun">
+          <div class="card-title"><span class="badge" style="background:var(--purple)"><svg viewBox="0 0 24 24"><use href="#ic-puzzle"/></svg></span>Menyusun dan Mengurai Bentuk</div>
+          <p class="sub">Seret kedua segitiga ke dalam kotak bayangan sesuai tujuan. Dua segitiga sama besar bisa menjadi bentuk baru.</p>
+
+          <div style="text-align:center;margin-top:12px">
+            <span class="goal" id="goalTag">Tujuan: Susun menjadi Segi Empat</span>
+          </div>
+
+          <div class="compose-stage" id="composeStage">
+            <div class="tray-hint" id="trayHint">Seret segitiga ke kotak bayangan</div>
+          </div>
+
+          <div class="stage-toolbar">
+            <button class="btn purple" id="btnSwitchGoal">Ganti Bentuk Tujuan</button>
+            <button class="btn yellow" id="btnResetCompose">Ulangi dari Awal</button>
+            <button class="btn blue" id="btnHearCompose">
+              <svg viewBox="0 0 24 24"><use href="#ic-sound"/></svg>
+              Dengar
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulasi B: mengelompokkan -->
+        <div class="card hidden" id="sim-kelompok">
+          <div class="card-title"><span class="badge" style="background:var(--green)"><svg viewBox="0 0 24 24"><use href="#ic-target"/></svg></span>Mengelompokkan Benda</div>
+          <p class="sub">Seret benda ke keranjang yang tepat. Kita bisa mengelompokkan benda berdasarkan bentuk, warna, maupun ukuran.</p>
+
+          <div class="pills" id="sortPills" style="margin-top:14px">
+            <button class="pill p-leng active" data-smode="bentuk">Berdasarkan Bentuk</button>
+            <button class="pill" data-smode="warna">Berdasarkan Warna</button>
+            <button class="pill" data-smode="ukuran">Berdasarkan Ukuran</button>
+          </div>
+
+          <div class="sort-top">
+            <div class="progress"><i id="sortBar"></i></div>
+            <div class="score-tag">
+              <svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>
+              <span id="sortScore">0</span> benar
+            </div>
+            <span class="score-tag" style="background:#eef4ff;border-color:var(--blue)">
+              Soal <span id="sortRound">1</span> / <span id="sortTotal">6</span>
+            </span>
+          </div>
+
+          <div class="sort-play">
+            <div class="obj-holder" id="objHolder"></div>
+            <div style="width:100%">
+              <div class="baskets" id="baskets-bentuk">
+                <div class="basket" data-key="lengkung"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sh-leng"/></svg></div><b>Bentuk Lengkung</b></div>
+                <div class="basket" data-key="segitiga"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sh-segi3"/></svg></div><b>Segitiga</b></div>
+                <div class="basket" data-key="segiempat"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sh-segi4"/></svg></div><b>Segi empat</b></div>
+              </div>
+              <div class="baskets hidden" id="baskets-warna">
+                <div class="basket" data-key="merah"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sw-merah"/></svg></div><b>Warna Merah</b></div>
+                <div class="basket" data-key="kuning"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sw-kuning"/></svg></div><b>Warna Kuning</b></div>
+              </div>
+              <div class="baskets hidden" id="baskets-ukuran">
+                <div class="basket" data-key="besar"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sz-besar"/></svg></div><b>Besar</b></div>
+                <div class="basket" data-key="kecil"><div class="mouth"><svg viewBox="0 0 100 100"><use href="#sz-kecil"/></svg></div><b>Kecil</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="msg-bar" id="sortMsg">Seret benda di kiri ke keranjang yang benar.</div>
+
+          <div class="result-panel hidden" id="sortResult">
+            <h3>Permainan Selesai</h3>
+            <p id="sortResultText">Kamu mengumpulkan bintang.</p>
+            <div class="stars-row" id="sortStars"></div>
+            <div class="btn-row">
+              <button class="btn green" id="btnSortAgain">Main Lagi</button>
+              <button class="btn blue" data-go="permainan">Lanjut ke Permainan Hitung</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PERMAINAN: HITUNG BENTUK ================= -->
+    <section class="sec" id="sec-permainan">
+      <div class="stack">
+        <div class="card">
+          <div class="card-title"><span class="badge" style="background:var(--orange)"><svg viewBox="0 0 24 24"><use href="#ic-dice"/></svg></span>Permainan: Hitung Bentuk Bangun</div>
+          <p class="sub">Perhatikan gambar, lalu hitung banyaknya bentuk yang ditanyakan. Gunakan tombol kurang dan tambah, lalu tekan Periksa.</p>
+
+          <div class="shape-key" style="margin-top:12px">
+            <span class="key-chip"><i class="k-leng"></i>Bentuk lengkung</span>
+            <span class="key-chip"><i class="k-s3"></i>Segitiga</span>
+            <span class="key-chip"><i class="k-s4"></i>Segi empat</span>
+          </div>
+
+          <div class="count-wrap">
+            <div class="figure-box" id="figureBox"></div>
+            <div class="q-card">
+              <span class="q-tag" id="countTag">Soal 1 dari 6</span>
+              <h3 id="countAsk">Ada berapa bentuk lengkung pada gambar?</h3>
+              <div class="stepper">
+                <button class="step-btn minus" id="cntMinus" aria-label="kurangi">-</button>
+                <div class="num-box" id="cntNum">0</div>
+                <button class="step-btn" id="cntPlus" aria-label="tambah">+</button>
+              </div>
+              <div class="btn-row">
+                <button class="btn green big" id="cntCheck">Periksa Jawaban</button>
+              </div>
+              <div class="score-tag" style="margin-top:14px;display:inline-flex">
+                <svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>
+                <span id="countScore">0</span> bintang
+              </div>
+            </div>
+          </div>
+
+          <div class="result-panel hidden" id="countResult">
+            <h3>Hebat, Permainan Selesai</h3>
+            <p id="countResultText"></p>
+            <div class="stars-row" id="countStars"></div>
+            <div class="btn-row">
+              <button class="btn green" id="btnCountAgain">Main Lagi</button>
+              <button class="btn purple" data-go="evaluasi">Kerjakan Evaluasi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= EVALUASI ================= -->
+    <section class="sec" id="sec-evaluasi">
+      <div class="stack">
+        <div class="card">
+          <div class="quiz-head">
+            <div class="card-title" style="margin-bottom:0"><span class="badge" style="background:var(--pink)"><svg viewBox="0 0 24 24"><use href="#ic-medal"/></svg></span>Evaluasi</div>
+            <div class="dots" id="quizDots"></div>
+          </div>
+          <p class="sub" style="margin-top:8px">Kerjakan semua soal dengan tenang. Jawaban yang salah boleh dicoba lagi.</p>
+
+          <div id="quizBody" style="margin-top:14px"></div>
+
+          <div class="quiz-done hidden" id="quizDone">
+            <svg style="width:120px;margin:0 auto" viewBox="0 0 200 200"><use href="#mascot"/></svg>
+            <h3 id="quizTitle">Evaluasi Selesai</h3>
+            <div class="big-score" id="quizScore">0/7</div>
+            <p id="quizMsg"></p>
+            <div class="stars-row" id="quizStars"></div>
+            <div class="btn-row" style="margin-bottom:18px">
+              <button class="btn green" id="btnQuizAgain">Ulangi Evaluasi</button>
+              <button class="btn blue" data-go="beranda">Kembali ke Beranda</button>
+            </div>
+            <div class="checklist">
+              <h4>Catatanku - Berilah tanda centang pada yang sudah bisa kamu lakukan</h4>
+              <div class="check-item" data-ck><span class="box"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></span>Aku sudah mengerti berbagai bentuk bangun</div>
+              <div class="check-item" data-ck><span class="box"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></span>Aku dapat mengelompokkan benda</div>
+              <div class="check-item" data-ck><span class="box"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></span>Aku dapat menyusun bentuk baru</div>
+              <div class="check-item" data-ck><span class="box"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></span>Aku aktif berdiskusi dengan teman</div>
+              <div class="check-item" data-ck><span class="box"><svg viewBox="0 0 24 24"><use href="#ic-check"/></svg></span>Aku belajar dengan hati senang</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="foot">Media Pembelajaran Mengenal Bentuk - Matematika untuk SD/MI Kelas I (SIBI) - Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi</div>
+</div>
+<script>
+"use strict";
+
+/* ============================================================
+   STATE & UTIL
+============================================================ */
+var State = {
+  sound: true,
+  music: true,
+  stars: 0,
+  started: false
+};
+
+function $(sel, root) { return (root || document).querySelector(sel); }
+function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function randInt(n) { return Math.floor(Math.random() * n); }
+
+function addStars(n) {
+  State.stars += n;
+  var el = $("#starTotal");
+  if (el) {
+    el.textContent = String(State.stars);
+    el.parentNode.animate(
+      [{ transform: "scale(1)" }, { transform: "scale(1.25)" }, { transform: "scale(1)" }],
+      { duration: 420, easing: "ease-out" }
+    );
+  }
+}
+
+/* ============================================================
+   SUARA: efek, suara bicara (bahasa Indonesia), musik latar
+============================================================ */
+var Sound = {
+  ctx: null,
+  master: null,
+  musicGain: null,
+  voiceGain: null,
+  musicTimer: null,
+  musicStep: 0,
+  ducked: false,
+
+  ensure: function () {
+    if (!this.ctx) {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      this.ctx = new AC();
+      this.master = this.ctx.createGain();
+      this.master.gain.value = 0.9;
+      this.master.connect(this.ctx.destination);
+      this.musicGain = this.ctx.createGain();
+      this.musicGain.gain.value = 0.0;
+      this.musicGain.connect(this.master);
+      this.voiceGain = this.ctx.createGain();
+      this.voiceGain.gain.value = 1;
+      this.voiceGain.connect(this.master);
+    }
+    if (this.ctx.state === "suspended") { try { this.ctx.resume(); } catch (e) {} }
+    return this.ctx;
+  },
+
+  tone: function (freq, dur, opts) {
+    if (!State.sound) return;
+    var ctx = this.ensure();
+    if (!ctx) return;
+    opts = opts || {};
+    var t0 = ctx.currentTime + (opts.delay || 0);
+    var osc = ctx.createOscillator();
+    var g = ctx.createGain();
+    osc.type = opts.type || "sine";
+    osc.frequency.setValueAtTime(freq, t0);
+    if (opts.to) {
+      try { osc.frequency.exponentialRampToValueAtTime(opts.to, t0 + dur); } catch (e) {}
+    }
+    var vol = opts.vol === undefined ? 0.16 : opts.vol;
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    osc.connect(g);
+    g.connect(opts.music ? this.musicGain : this.master);
+    osc.start(t0);
+    osc.stop(t0 + dur + 0.06);
+  },
+
+  click: function () { this.tone(660, 0.08, { type: "triangle", vol: 0.10 }); },
+  pop: function () { this.tone(360, 0.16, { to: 760, type: "sine", vol: 0.18 }); },
+  drop: function () { this.tone(520, 0.12, { to: 880, type: "triangle", vol: 0.14 }); },
+  wrong: function () {
+    this.tone(300, 0.20, { type: "sine", vol: 0.14 });
+    this.tone(220, 0.26, { delay: 0.16, type: "sine", vol: 0.13 });
+  },
+  correct: function () {
+    this.tone(523.25, 0.14, { type: "sine", vol: 0.16 });
+    this.tone(659.25, 0.14, { delay: 0.11, type: "sine", vol: 0.16 });
+    this.tone(783.99, 0.22, { delay: 0.22, type: "sine", vol: 0.17 });
+  },
+  cheer: function () {
+    var n = [523.25, 659.25, 783.99, 1046.5];
+    for (var i = 0; i < n.length; i++) this.tone(n[i], 0.2, { delay: i * 0.13, vol: 0.17 });
+    this.tone(1318.5, 0.5, { delay: 0.56, vol: 0.13 });
+    this.tone(659.25, 0.5, { delay: 0.56, vol: 0.08 });
+  },
+  merge: function () {
+    this.tone(300, 0.3, { to: 900, type: "triangle", vol: 0.16 });
+    this.tone(1200, 0.3, { delay: 0.1, type: "sine", vol: 0.08 });
+  },
+
+  /* --- suara bicara bahasa Indonesia --- */
+  speak: function (text, force) {
+    if (!State.sound && !force) return;
+    if (!("speechSynthesis" in window)) return;
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "id-ID";
+      u.rate = 0.95;
+      u.pitch = 1.1;
+      var vs = window.speechSynthesis.getVoices() || [];
+      for (var i = 0; i < vs.length; i++) {
+        if (vs[i].lang && vs[i].lang.toLowerCase().indexOf("id") === 0) { u.voice = vs[i]; break; }
+      }
+      var self = this;
+      u.onstart = function () { self.setDuck(true); };
+      u.onend = function () { self.setDuck(false); };
+      u.onerror = function () { self.setDuck(false); };
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
+  },
+
+  setDuck: function (on) {
+    this.ducked = on;
+    this.applyMusicVol();
+  },
+
+  /* --- musik latar lembut --- */
+  musicNotes: [523.25, 587.33, 659.25, 783.99, 659.25, 587.33, 523.25, 392.00, 440.00, 523.25, 440.00, 392.00],
+  startMusic: function () {
+    if (this.musicTimer) return;
+    var self = this;
+    this.musicTimer = setInterval(function () {
+      if (!State.sound || !State.music || document.hidden) return;
+      var ctx = self.ensure();
+      if (!ctx) return;
+      var f = self.musicNotes[self.musicStep % self.musicNotes.length];
+      self.musicStep++;
+      self.tone(f, 0.42, { vol: 0.05, music: true, type: "sine" });
+      if (self.musicStep % 4 === 1) self.tone(f / 2, 0.6, { vol: 0.035, music: true, type: "triangle" });
+    }, 460);
+  },
+  applyMusicVol: function () {
+    if (!this.musicGain) return;
+    var on = State.sound && State.music && !this.ducked;
+    var v = on ? 1 : 0;
+    try {
+      this.musicGain.gain.setTargetAtTime(v, this.ctx.currentTime, 0.15);
+    } catch (e) { this.musicGain.gain.value = v; }
+  }
+};
+
+function primeAudio() {
+  if (State.started) return;
+  State.started = true;
+  Sound.ensure();
+  Sound.applyMusicVol();
+  Sound.startMusic();
+}
+
+/* load voice list awal (opsional) */
+if ("speechSynthesis" in window) {
+  window.speechSynthesis.onvoiceschanged = function () { window.speechSynthesis.getVoices(); };
+  try { window.speechSynthesis.getVoices(); } catch (e) {}
+}
+
+/* ============================================================
+   KONFETI
+============================================================ */
+var CONF_COLORS = ["#ff8fb1", "#ffd23f", "#6ec6ff", "#7ed957", "#b28dff", "#ffab5e"];
+function burst(x, y, count) {
+  count = count || 14;
+  for (var i = 0; i < count; i++) {
+    var d = document.createElement("div");
+    d.className = "confetti";
+    var c = CONF_COLORS[randInt(CONF_COLORS.length)];
+    var kind = randInt(3);
+    d.style.background = c;
+    if (kind === 1) d.style.borderRadius = "50%";
+    if (kind === 2) {
+      d.style.background = "transparent";
+      d.style.width = "0"; d.style.height = "0";
+      d.style.borderLeft = "8px solid transparent";
+      d.style.borderRight = "8px solid transparent";
+      d.style.borderBottom = "14px solid " + c;
+    }
+    d.style.left = x + "px";
+    d.style.top = y + "px";
+    document.body.appendChild(d);
+    var ang = (Math.PI * 2 * i) / count + Math.random() * 0.6;
+    var dist = 60 + Math.random() * 90;
+    var dx = Math.cos(ang) * dist;
+    var dy = Math.sin(ang) * dist - 40;
+    if (d.animate) {
+      var anim = d.animate([
+        { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+        { transform: "translate(" + dx + "px," + (dy + 60) + "px) rotate(" + (Math.random() * 520 - 260) + "deg)", opacity: 0 }
+      ], { duration: 850 + Math.random() * 400, easing: "cubic-bezier(.2,.7,.4,1)" });
+      anim.onfinish = function () { if (d.parentNode) d.parentNode.removeChild(d); };
+    } else {
+      setTimeout(function (node) { return function () { if (node.parentNode) node.parentNode.removeChild(node); }; }(d), 1000);
+    }
+  }
+}
+function burstAt(el) {
+  if (!el) return;
+  var r = el.getBoundingClientRect();
+  burst(r.left + r.width / 2, r.top + r.height / 2, 16);
+}
+
+/* ============================================================
+   NAVIGASI
+============================================================ */
+var SECTION_INTRO = {
+  beranda: "Halo teman-teman. Selamat datang di kelas mengenal bentuk. Ayo mulai petualangan bersama Mia.",
+  belajar: "Di bagian ini kita akan mengenal bentuk lengkung, segitiga, dan segi empat beserta benda di sekitar kita.",
+  simulasi: "Di bagian ini kita akan bermain simulasi. Kita akan menyusun bentuk dan mengelompokkan benda.",
+  permainan: "Ayo bermain hitung bentuk. Perhatikan gambar dengan baik lalu hitung banyak bentuknya.",
+  evaluasi: "Sekarang waktunya evaluasi. Kerjakan soal-soalnya dengan tenang. Kamu pasti bisa."
+};
+
+function showSection(id, opts) {
+  opts = opts || {};
+  $$(".sec").forEach(function (s) { s.classList.remove("active"); });
+  var sec = document.getElementById("sec-" + id);
+  if (sec) sec.classList.add("active");
+  $$("#nav .tab").forEach(function (t) {
+    t.classList.toggle("active", t.getAttribute("data-sec") === id);
+  });
+  if (id === "simulasi") switchSim(opts.sim || window.__curSim || "susun");
+  if (id === "belajar" && opts.lcat) setLearnCat(opts.lcat);
+  if (id === "permainan") CountGame.ensure();
+  if (id === "evaluasi") Quiz.ensure();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (!opts.silent) Sound.speak(SECTION_INTRO[id] || "");
+}
+
+document.addEventListener("click", function (e) {
+  var goBtn = e.target.closest("[data-go]");
+  if (goBtn) {
+    primeAudio();
+    Sound.click();
+    showSection(goBtn.getAttribute("data-go"), {
+      sim: goBtn.getAttribute("data-sim"),
+      lcat: goBtn.getAttribute("data-lcat")
+    });
+    return;
+  }
+  var tab = e.target.closest("#nav .tab");
+  if (tab) {
+    primeAudio();
+    Sound.click();
+    showSection(tab.getAttribute("data-sec"));
+  }
+});
+
+/* tombol suara & musik */
+$("#soundBtn").addEventListener("click", function () {
+  primeAudio();
+  State.sound = !State.sound;
+  this.classList.toggle("off", !State.sound);
+  $(".i-on", this).classList.toggle("hidden", !State.sound);
+  $(".i-off", this).classList.toggle("hidden", State.sound);
+  if (!State.sound && "speechSynthesis" in window) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+  Sound.applyMusicVol();
+  if (State.sound) { Sound.pop(); Sound.speak("Suara dinyalakan"); }
+});
+$("#musicBtn").addEventListener("click", function () {
+  primeAudio();
+  State.music = !State.music;
+  this.classList.toggle("off", !State.music);
+  $(".i-on", this).classList.toggle("hidden", !State.music);
+  $(".i-off", this).classList.toggle("hidden", State.music);
+  Sound.applyMusicVol();
+  Sound.click();
+});
+
+/* ============================================================
+   BELAJAR BENTUK
+============================================================ */
+var LEARN = {
+  leng: {
+    name: "Bentuk Lengkung",
+    hero: "#sh-leng",
+    color: "#ffeef4",
+    border: "#ffd6e4",
+    desc: "Bentuk lengkung tidak punya sudut. Bagian pinggirnya melengkung seperti lingkaran.",
+    story: "Bentuk lengkung tidak memiliki sudut. Pinggirnya melengkung, bulat, seperti lingkaran. Telur, piring, melon, dan jam dinding berbentuk lengkung. Coba kamu cari benda lengkung di kelas ini.",
+    items: [
+      { art: "#ob-telur", name: "Telur", say: "Telur. Telur berbentuk lengkung." },
+      { art: "#ob-piring", name: "Piring", say: "Piring. Piring berbentuk lengkung." },
+      { art: "#ob-melon", name: "Melon", say: "Melon. Melon berbentuk lengkung." },
+      { art: "#ob-jam", name: "Jam dinding", say: "Jam dinding. Jam dinding berbentuk lengkung." }
+    ]
+  },
+  segitiga: {
+    name: "Segitiga",
+    hero: "#sh-segi3",
+    color: "#eaf7ff",
+    border: "#c9ecff",
+    desc: "Segitiga punya 3 sisi dan 3 sudut. Bentuknya seperti atap rumah.",
+    story: "Segitiga memiliki tiga sisi dan tiga sudut. Penggaris segitiga, kue lupis, tenda, dan atap rumah berbentuk segitiga. Peganglah tiga jari kamu, bentuknya juga menyerupai segitiga.",
+    items: [
+      { art: "#ob-penggaris3", name: "Penggaris segitiga", say: "Penggaris segitiga. Bentuknya segitiga." },
+      { art: "#ob-lupis", name: "Kue lupis", say: "Kue lupis. Kue lupis berbentuk segitiga." },
+      { art: "#ob-tenda", name: "Tenda", say: "Tenda. Tenda berbentuk segitiga." },
+      { art: "#ob-atap", name: "Atap rumah", say: "Atap rumah. Atap berbentuk segitiga." }
+    ]
+  },
+  segiempat: {
+    name: "Segi empat",
+    hero: "#sh-segi4",
+    color: "#fff8dd",
+    border: "#ffe9a8",
+    desc: "Segi empat punya 4 sisi dan 4 sudut. Contohnya pintu dan jendela.",
+    story: "Segi empat memiliki empat sisi dan empat sudut. Pintu, jendela, buku, dan bingkai foto berbentuk segi empat. Lihatlah buku tulismu, bentuknya segi empat.",
+    items: [
+      { art: "#ob-pintu", name: "Pintu", say: "Pintu. Pintu berbentuk segi empat." },
+      { art: "#ob-jendela", name: "Jendela", say: "Jendela. Jendela berbentuk segi empat." },
+      { art: "#ob-buku", name: "Buku", say: "Buku. Buku berbentuk segi empat." },
+      { art: "#ob-bingkai", name: "Bingkai foto", say: "Bingkai foto. Bingkai berbentuk segi empat." }
+    ]
+  }
+};
+var learnCat = "leng";
+
+function renderLearn() {
+  var d = LEARN[learnCat];
+  var head = $("#learnHead");
+  head.style.background = d.color;
+  head.style.borderColor = d.border;
+  head.innerHTML =
+    '<svg class="big" viewBox="0 0 100 100"><use href="' + d.hero + '"/></svg>' +
+    "<div><h3>" + d.name + "</h3><p>" + d.desc + "</p></div>";
+  var grid = $("#exGrid");
+  grid.innerHTML = "";
+  d.items.forEach(function (it) {
+    var card = document.createElement("button");
+    card.className = "ex-card";
+    card.innerHTML =
+      '<span class="hear"><svg viewBox="0 0 24 24"><use href="#ic-hear"/></svg></span>' +
+      '<svg class="art" viewBox="0 0 100 100"><use href="' + it.art + '"/></svg>' +
+      "<b>" + it.name + "</b><small>ketuk untuk dengar</small>";
+    card.addEventListener("click", function () {
+      primeAudio();
+      $$(".ex-card", grid).forEach(function (c) { c.classList.remove("picked"); });
+      card.classList.add("picked");
+      Sound.pop();
+      Sound.speak(it.say);
+      burstAt(card);
+    });
+    grid.appendChild(card);
+  });
+}
+
+function setLearnCat(cat) {
+  if (!LEARN[cat]) return;
+  learnCat = cat;
+  $$("#learnPills .pill").forEach(function (p) {
+    p.classList.toggle("active", p.getAttribute("data-lcat") === cat);
+  });
+  renderLearn();
+}
+
+$$("#learnPills .pill").forEach(function (p) {
+  p.addEventListener("click", function () {
+    primeAudio();
+    Sound.click();
+    setLearnCat(p.getAttribute("data-lcat"));
+    Sound.speak(LEARN[p.getAttribute("data-lcat")].story);
+  });
+});
+$("#btnHearCat").addEventListener("click", function () {
+  primeAudio();
+  Sound.click();
+  Sound.speak(LEARN[learnCat].story);
+});
+
+renderLearn();
+</script>
+<script>
+"use strict";
+
+/* ============================================================
+   SIMULASI A: MENYUSUN & MENGURAI DUA SEGITIGA
+============================================================ */
+var Compose = {
+  goal: "segiempat",
+  P: 130,
+  merged: false,
+  box: null,
+  slots: [],
+  autoTimer: null,
+  pieces: [],
+  stage: null,
+  ghost: null,
+  result: null,
+  badge: null,
+
+  init: function () {
+    this.stage = $("#composeStage");
+    var self = this;
+
+    this.pieces = [
+      this.makePiece("a", "#ff8fb1", "Mia"),
+      this.makePiece("b", "#6ec6ff", "Bimo")
+    ];
+
+    $("#btnSwitchGoal").addEventListener("click", function () {
+      primeAudio(); Sound.click();
+      self.goal = (self.goal === "segiempat") ? "segitiga" : "segiempat";
+      self.reset(true);
+      Sound.speak(self.instruction());
+    });
+    $("#btnResetCompose").addEventListener("click", function () {
+      primeAudio(); Sound.click();
+      self.reset(true);
+      Sound.speak("Baik, kita mulai lagi dari awal.");
+    });
+    $("#btnHearCompose").addEventListener("click", function () {
+      primeAudio(); Sound.click();
+      Sound.speak(self.instruction());
+    });
+
+    this.reset(false);
+    var t;
+    window.addEventListener("resize", function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
+        if (!Compose.merged && Compose.stage && Compose.stage.clientWidth > 0) Compose.reset(false);
+      }, 200);
+    });
+  },
+
+  makePiece: function (id, color, friend) {
+    var el = document.createElement("div");
+    el.className = "piece";
+    el.id = "piece" + id;
+    el.innerHTML =
+      '<svg viewBox="0 0 100 100">' +
+      '<polygon points="6,6 6,94 94,94" fill="' + color + '" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>' +
+      '<circle cx="34" cy="70" r="5" fill="#3b3b64"/><circle cx="58" cy="70" r="5" fill="#3b3b64"/>' +
+      '<circle cx="36" cy="68" r="1.8" fill="#fff"/><circle cx="60" cy="68" r="1.8" fill="#fff"/>' +
+      '<path d="M37 82 q7 7 14 0" stroke="#3b3b64" stroke-width="3.6" fill="none" stroke-linecap="round"/>' +
+      "</svg>";
+    var self = this;
+    this.stage.appendChild(el);
+    el.addEventListener("pointerdown", function (e) { self.startDrag(e, el); });
+    return el;
+  },
+
+  instruction: function () {
+    if (this.goal === "segiempat") {
+      return "Seret kedua segitiga ke dalam kotak bayangan. Dua segitiga sama besar akan menjadi segi empat.";
+    }
+    return "Seret kedua segitiga ke dalam kotak bayangan. Dua segitiga sama besar akan menjadi segitiga yang lebih besar.";
+  },
+
+  goalLabel: function () {
+    return this.goal === "segiempat" ? "Tujuan: Susun menjadi Segi Empat" : "Tujuan: Susun menjadi Segitiga Besar";
+  },
+
+  layout: function () {
+    var W = this.stage.clientWidth;
+    var H = this.stage.clientHeight;
+    this.P = this.pieces[0].offsetWidth || 130;
+    var P = this.P;
+    var y = Math.round(Math.max(34, H * 0.11));
+    if (this.goal === "segiempat") {
+      this.box = { x: Math.round((W - P) / 2), y: y, w: P, h: P };
+      this.slots = [
+        { x: this.box.x, y: this.box.y, r: 180 },
+        { x: this.box.x, y: this.box.y, r: 0 }
+      ];
+    } else {
+      var w = P * 2;
+      var x = Math.round(Math.max(10, (W - w) / 2));
+      this.box = { x: x, y: y, w: w, h: P };
+      this.slots = [
+        { x: x, y: y, r: -90 },
+        { x: x + P, y: y, r: 0 }
+      ];
+    }
+    this.tray = {
+      a: { x: Math.max(10, Math.round(W * 0.10)), y: H - P - 12 },
+      b: { x: Math.min(W - P - 10, Math.round(W * 0.90) - P), y: H - P - 12 }
+    };
+  },
+
+  drawGhost: function () {
+    if (this.ghost && this.ghost.parentNode) this.ghost.parentNode.removeChild(this.ghost);
+    var b = this.box;
+    var pad = 8;
+    var vb = b.w + pad * 2, vh = b.h + pad * 2;
+    var inner;
+    if (this.goal === "segiempat") {
+      inner =
+        '<rect x="3" y="3" width="' + (b.w - 6) + '" height="' + (b.h - 6) + '" rx="14" fill="rgba(255,255,255,.55)" stroke="#3b3b64" stroke-opacity=".45" stroke-width="4" stroke-dasharray="12 9"/>' +
+        '<line x1="6" y1="6" x2="' + (b.w - 6) + '" y2="' + (b.h - 6) + '" stroke="#3b3b64" stroke-opacity=".3" stroke-width="3.5" stroke-dasharray="9 8"/>';
+    } else {
+      inner =
+        '<polygon points="4,' + (b.h - 4) + ' ' + (b.w - 4) + ',' + (b.h - 4) + ' ' + (b.w / 2) + ',4" fill="rgba(255,255,255,.55)" stroke="#3b3b64" stroke-opacity=".45" stroke-width="4" stroke-linejoin="round" stroke-dasharray="12 9"/>' +
+        '<line x1="' + (b.w / 2) + '" y1="8" x2="' + (b.w / 2) + '" y2="' + (b.h - 6) + '" stroke="#3b3b64" stroke-opacity=".3" stroke-width="3.5" stroke-dasharray="9 8"/>';
+    }
+    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    svg.setAttribute("viewBox", "-" + pad + " -" + pad + " " + vb + " " + vh);
+    svg.style.cssText = "position:absolute;left:" + (b.x - pad) + "px;top:" + (b.y - pad) + "px;width:" + vb + "px;height:" + vh + "px;pointer-events:none;z-index:1";
+    svg.innerHTML = inner;
+    this.stage.insertBefore(svg, this.stage.firstChild);
+    this.ghost = svg;
+  },
+
+  setPiece: function (piece, x, y, r, withTransition) {
+    piece.style.transition = withTransition ? "transform .35s cubic-bezier(.3,1.3,.5,1)" : "none";
+    piece.style.transform = "translate(" + x + "px," + y + "px) rotate(" + r + "deg)";
+    piece.dataset.x = x;
+    piece.dataset.y = y;
+    piece.dataset.r = r;
+  },
+
+  reset: function (announce) {
+    clearTimeout(this.autoTimer);
+    this.merged = false;
+    if (this.result && this.result.parentNode) this.result.parentNode.removeChild(this.result);
+    if (this.badge && this.badge.parentNode) this.badge.parentNode.removeChild(this.badge);
+    $$(".piece", this.stage).forEach(function (p) { p.classList.remove("placed"); p.style.opacity = "1"; p.style.pointerEvents = ""; });
+    $("#goalTag").textContent = this.goalLabel();
+    $("#trayHint").textContent = "Seret segitiga ke kotak bayangan";
+    $("#trayHint").classList.remove("hidden");
+    this.layout();
+    this.drawGhost();
+    this.setPiece(this.pieces[0], this.tray.a.x, this.tray.a.y, 0, false);
+    this.setPiece(this.pieces[1], this.tray.b.x, this.tray.b.y, 0, false);
+    if (announce) $("#composeStage").animate &&
+      $("#composeStage").animate([{ filter: "brightness(1.06)" }, { filter: "brightness(1)" }], { duration: 300 });
+  },
+
+  startDrag: function (e, piece) {
+    if (this.merged) return;
+    e.preventDefault();
+    primeAudio();
+    var self = this;
+    piece.classList.remove("placed");
+    var startX = e.clientX, startY = e.clientY;
+    var baseX = parseFloat(piece.dataset.x) || 0;
+    var baseY = parseFloat(piece.dataset.y) || 0;
+    piece.classList.add("dragging");
+    piece.style.zIndex = "40";
+    piece.style.transition = "none";
+    try { piece.setPointerCapture(e.pointerId); } catch (err) {}
+    Sound.tone(440, 0.06, { type: "triangle", vol: 0.07 });
+
+    function move(ev) {
+      var x = baseX + (ev.clientX - startX);
+      var y = baseY + (ev.clientY - startY);
+      piece.dataset.x = x; piece.dataset.y = y;
+      piece.style.transform = "translate(" + x + "px," + y + "px)";
+    }
+    function up(ev) {
+      piece.removeEventListener("pointermove", move);
+      piece.removeEventListener("pointerup", up);
+      piece.removeEventListener("pointercancel", up);
+      piece.classList.remove("dragging");
+      piece.style.zIndex = "";
+      self.trySnap(piece, ev);
+    }
+    piece.addEventListener("pointermove", move);
+    piece.addEventListener("pointerup", up);
+    piece.addEventListener("pointercancel", up);
+  },
+
+  trySnap: function (piece, ev) {
+    var self = this;
+    var other = (piece === this.pieces[0]) ? this.pieces[1] : this.pieces[0];
+    var occ = other.classList.contains("placed") ? parseInt(other.dataset.slot, 10) : -1;
+    var px = parseFloat(piece.dataset.x) + this.P / 2;
+    var py = parseFloat(piece.dataset.y) + this.P / 2;
+    var best = -1, bd = 1e9;
+    for (var i = 0; i < this.slots.length; i++) {
+      if (i === occ) continue;
+      var tx = this.slots[i].x + this.P / 2;
+      var ty = this.slots[i].y + this.P / 2;
+      var d = Math.sqrt((px - tx) * (px - tx) + (py - ty) * (py - ty));
+      if (d < bd) { bd = d; best = i; }
+    }
+    if (best >= 0 && bd < this.P * 0.9) {
+      var slot = this.slots[best];
+      this.setPiece(piece, slot.x, slot.y, slot.r, true);
+      piece.classList.add("placed");
+      piece.dataset.slot = String(best);
+      Sound.drop();
+      Sound.speak(best === 0 ? "Bagus, segitiga pertama pas." : "Bagus, segitiga kedua pas.");
+      setTimeout(function () { self.checkMerge(); }, 380);
+    } else {
+      var idx = (piece === this.pieces[0]) ? 0 : 1;
+      var back = (idx === 0) ? this.tray.a : this.tray.b;
+      this.setPiece(piece, back.x, back.y, 0, true);
+      Sound.tone(240, 0.12, { type: "sine", vol: 0.09 });
+    }
+  },
+
+  checkMerge: function () {
+    if (this.merged) return;
+    var ok = this.pieces.every(function (p) { return p.classList.contains("placed"); });
+    if (!ok) return;
+    this.merged = true;
+    var self = this;
+    var b = this.box;
+    $("#trayHint").classList.add("hidden");
+    if (this.ghost) { this.ghost.style.opacity = "0"; this.ghost.style.transition = "opacity .3s"; }
+
+    setTimeout(function () {
+      Sound.merge();
+      var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "-6 -6 " + (b.w + 12) + " " + (b.h + 12));
+      svg.style.cssText = "position:absolute;left:" + (b.x - 6) + "px;top:" + (b.y - 6) + "px;width:" + (b.w + 12) + "px;height:" + (b.h + 12) + "px;z-index:15;pointer-events:none";
+      if (self.goal === "segiempat") {
+        svg.innerHTML =
+          '<rect x="4" y="4" width="' + (b.w - 8) + '" height="' + (b.h - 8) + '" rx="16" fill="#ffd23f" stroke="#3b3b64" stroke-width="6"/>' +
+          '<circle cx="' + (b.w * 0.37) + '" cy="' + (b.h * 0.42) + '" r="' + (b.w * 0.055) + '" fill="#3b3b64"/>' +
+          '<circle cx="' + (b.w * 0.63) + '" cy="' + (b.h * 0.42) + '" r="' + (b.w * 0.055) + '" fill="#3b3b64"/>' +
+          '<path d="M' + (b.w * 0.4) + " " + (b.h * 0.58) + " Q" + (b.w * 0.5) + " " + (b.h * 0.7) + " " + (b.w * 0.6) + " " + (b.h * 0.58) + '" stroke="#3b3b64" stroke-width="6" fill="none" stroke-linecap="round"/>';
+      } else {
+        var W2 = b.w, H2 = b.h;
+        svg.innerHTML =
+          '<polygon points="6,' + (H2 - 6) + " " + (W2 - 6) + "," + (H2 - 6) + " " + (W2 / 2) + ',6" fill="#6ec6ff" stroke="#3b3b64" stroke-width="6" stroke-linejoin="round"/>' +
+          '<circle cx="' + (W2 * 0.44) + '" cy="' + (H2 * 0.66) + '" r="' + (H2 * 0.055) + '" fill="#3b3b64"/>' +
+          '<circle cx="' + (W2 * 0.56) + '" cy="' + (H2 * 0.66) + '" r="' + (H2 * 0.055) + '" fill="#3b3b64"/>' +
+          '<path d="M' + (W2 * 0.45) + " " + (H2 * 0.78) + " Q" + (W2 * 0.5) + " " + (H2 * 0.86) + " " + (W2 * 0.55) + " " + (H2 * 0.78) + '" stroke="#3b3b64" stroke-width="5" fill="none" stroke-linecap="round"/>';
+      }
+      svg.classList.add("result-shape");
+      self.result = svg;
+      self.stage.appendChild(svg);
+
+      self.pieces.forEach(function (p) { p.style.opacity = "0"; p.style.pointerEvents = "none"; p.style.transition = "opacity .3s"; });
+
+      var flash = document.createElement("div");
+      flash.className = "merge-flash";
+      var title = self.goal === "segiempat" ? "Segi Empat Terbentuk" : "Segitiga Besar Terbentuk";
+      var body = self.goal === "segiempat"
+        ? "Dua segitiga sama besar disusun menjadi segi empat."
+        : "Dua segitiga sama besar disusun menjadi segitiga yang lebih besar.";
+      flash.innerHTML = '<div class="merge-badge"><b>' + title + "</b><span>" + body + "</span></div>";
+      self.stage.appendChild(flash);
+      self.badge = flash;
+
+      Sound.cheer();
+      var br = flash.getBoundingClientRect();
+      burst(br.left + br.width / 2, br.top + br.height / 2, 22);
+      addStars(1);
+      Sound.speak(title + ". " + body);
+
+      self.autoTimer = setTimeout(function () {
+        self.goal = (self.goal === "segiempat") ? "segitiga" : "segiempat";
+        self.reset(false);
+        Sound.speak("Sekarang giliran kamu. " + self.instruction());
+      }, 3400);
+    }, 420);
+  }
+};
+
+/* ============================================================
+   SIMULASI B: MENGELOMPOKKAN BENDA
+============================================================ */
+var SORT_SETS = {
+  bentuk: [
+    { art: "#ob-piring", name: "Piring", key: "lengkung", ans: "Bentuk lengkung" },
+    { art: "#ob-tenda", name: "Tenda", key: "segitiga", ans: "Segitiga" },
+    { art: "#ob-pintu", name: "Pintu", key: "segiempat", ans: "Segi empat" },
+    { art: "#ob-telur", name: "Telur", key: "lengkung", ans: "Bentuk lengkung" },
+    { art: "#ob-lupis", name: "Kue lupis", key: "segitiga", ans: "Segitiga" },
+    { art: "#ob-buku", name: "Buku", key: "segiempat", ans: "Segi empat" }
+  ],
+  warna: [
+    { art: "#ob-balon-merah", name: "Balon", key: "merah", ans: "Warna merah" },
+    { art: "#ob-pisang", name: "Pisang", key: "kuning", ans: "Warna kuning" },
+    { art: "#ob-apel", name: "Apel", key: "merah", ans: "Warna merah" },
+    { art: "#ob-balon-kuning", name: "Balon", key: "kuning", ans: "Warna kuning" },
+    { art: "#ob-bunga", name: "Bunga", key: "merah", ans: "Warna merah" },
+    { art: "#ob-bintang", name: "Bintang", key: "kuning", ans: "Warna kuning" }
+  ],
+  ukuran: []
+};
+(function () {
+  var arts = [
+    { art: "#ob-apel", name: "Apel" },
+    { art: "#ob-bola", name: "Bola" },
+    { art: "#ob-melon", name: "Melon" }
+  ];
+  var list = [];
+  arts.forEach(function (a) {
+    list.push({ art: a.art, name: a.name, key: "besar", ans: "Besar", big: true });
+    list.push({ art: a.art, name: a.name, key: "kecil", ans: "Kecil", big: false });
+  });
+  SORT_SETS.ukuran = list;
+})();
+
+var SortGame = {
+  mode: "bentuk",
+  order: [],
+  round: 0,
+  score: 0,
+  clean: 0,
+  total: 6,
+  locked: false,
+  finished: false,
+  card: null,
+
+  reset: function (newMode) {
+    if (newMode) this.mode = newMode;
+    this.order = shuffle(SORT_SETS[this.mode]).slice(0, this.total);
+    this.round = 0;
+    this.score = 0;
+    this.clean = 0;
+    this.locked = false;
+    this.finished = false;
+    this._noMistake = true;
+    $("#sortResult").classList.add("hidden");
+    $("#sortScore").textContent = "0";
+    $("#sortTotal").textContent = String(this.total);
+    ["bentuk", "warna", "ukuran"].forEach(function (m) {
+      $("#baskets-" + m).classList.toggle("hidden", m !== SortGame.mode);
+    });
+    $$("#sortPills .pill").forEach(function (p) {
+      p.classList.toggle("active", p.getAttribute("data-smode") === SortGame.mode);
+    });
+    this.setMsg("Seret benda ke keranjang yang tepat.", "");
+    this.renderRound();
+  },
+
+  setMsg: function (text, cls) {
+    var m = $("#sortMsg");
+    m.textContent = text;
+    m.className = "msg-bar" + (cls ? " " + cls : "");
+  },
+
+  renderRound: function () {
+    if (this.finished) return;
+    var holder = $("#objHolder");
+    holder.innerHTML = "";
+    if (this.round >= this.total) { this.finish(); return; }
+    var data = this.order[this.round];
+    $("#sortRound").textContent = String(this.round + 1);
+    $("#sortBar").style.width = Math.round((this.round / this.total) * 100) + "%";
+
+    var card = document.createElement("div");
+    card.className = "draggable-obj";
+    var artH = data.big === false ? 54 : 110;
+    card.innerHTML =
+      '<svg class="art" viewBox="0 0 100 100" style="height:' + artH + "px;width:auto;margin:0 auto;" +
+      (data.big === false ? "transform:translateY(28px);" : "") + '"><use href="' + data.art + '"/></svg>' +
+      "<b>" + data.name + "</b>";
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", "Seret " + data.name);
+    holder.appendChild(card);
+    this.card = card;
+    this._noMistake = true;
+    var self = this;
+    card.addEventListener("pointerdown", function (e) { self.startDrag(e, card, data); });
+    this.setMsg("Seret " + data.name + " ke keranjang yang tepat.", "");
+  },
+
+  startDrag: function (e, card, data) {
+    if (this.locked || this.finished) return;
+    e.preventDefault();
+    primeAudio();
+    var self = this;
+    var sx = e.clientX, sy = e.clientY;
+    var base = { x: 0, y: 0 };
+    try {
+      var cs = window.getComputedStyle(card).transform;
+      if (cs && cs !== "none" && cs.indexOf("matrix(") === 0) {
+        var parts = cs.slice(7, -1).split(",");
+        base.x = parseFloat(parts[4]) || 0;
+        base.y = parseFloat(parts[5]) || 0;
+      }
+    } catch (err) {}
+    card.classList.add("dragging");
+    card.style.willChange = "transform";
+    try { card.setPointerCapture(e.pointerId); } catch (err) {}
+    Sound.tone(420, 0.06, { type: "triangle", vol: 0.06 });
+
+    function move(ev) {
+      var dx = ev.clientX - sx + base.x;
+      var dy = ev.clientY - sy + base.y;
+      card.style.transform = "translate(" + dx + "px," + dy + "px) scale(1.06) rotate(-2deg)";
+      var b = self.basketAt(ev.clientX, ev.clientY);
+      $$("#sec-simulasi .basket").forEach(function (el) {
+        el.classList.toggle("over", el === b);
+      });
+    }
+    function up(ev) {
+      card.removeEventListener("pointermove", move);
+      card.removeEventListener("pointerup", up);
+      card.removeEventListener("pointercancel", up);
+      card.classList.remove("dragging");
+      card.style.willChange = "";
+      $$("#sec-simulasi .basket").forEach(function (el) { el.classList.remove("over"); });
+      var b = self.basketAt(ev.clientX, ev.clientY);
+      if (!b) { self.returnHome(card); return; }
+      self.judge(b, card, data);
+    }
+    card.addEventListener("pointermove", move);
+    card.addEventListener("pointerup", up);
+    card.addEventListener("pointercancel", up);
+  },
+
+  basketAt: function (x, y) {
+    var mode = this.mode;
+    var list = $$("#baskets-" + mode + " .basket");
+    for (var i = 0; i < list.length; i++) {
+      var r = list[i].getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return list[i];
+    }
+    return null;
+  },
+
+  returnHome: function (card) {
+    card.style.transform = "translate(0px,0px)";
+  },
+
+  judge: function (basket, card, data) {
+    var self = this;
+    var correct = basket.getAttribute("data-key") === data.key;
+    if (correct) {
+      this.locked = true;
+      this.score++;
+      var firstTry = this._noMistake;
+      if (firstTry) { this.clean++; addStars(1); }
+      $("#sortScore").textContent = String(this.score);
+      basket.classList.add("good");
+      Sound.correct();
+      burstAt(basket);
+      Sound.speak(firstTry ? "Hebat, jawabanmu benar." : "Benar, bagus mau mencoba lagi.");
+
+      var br = basket.getBoundingClientRect();
+      var cr = card.getBoundingClientRect();
+      var dx = (br.left + br.width / 2) - (cr.left + cr.width / 2);
+      var dy = (br.top + br.height / 2) - (cr.top + cr.height / 2);
+      card.classList.add("flying");
+      card.style.transform = "translate(" + dx + "px," + dy + "px) scale(.3) rotate(12deg)";
+      card.style.opacity = "0";
+      setTimeout(function () {
+        basket.classList.remove("good");
+        card.style.display = "none";
+        self.round++;
+        self._noMistake = true;
+        self.locked = false;
+        $("#sortBar").style.width = Math.round((self.round / self.total) * 100) + "%";
+        self.renderRound();
+      }, 700);
+    } else {
+      this._noMistake = false;
+      basket.classList.add("bad");
+      Sound.wrong();
+      Sound.speak("Belum tepat. Coba lagi ya.");
+      this.setMsg("Belum tepat. Seret " + data.name + " ke keranjang yang benar.", "no");
+      setTimeout(function () { basket.classList.remove("bad"); }, 600);
+      this.returnHome(card);
+    }
+  },
+
+  finish: function () {
+    this.finished = true;
+    $("#sortBar").style.width = "100%";
+    var n = this.score;
+    var stars = n >= 6 ? 3 : (n >= 4 ? 2 : 1);
+    $("#sortResultText").textContent = "Kamu benar " + n + " dari " + this.total + " benda. Kamu mengumpulkan " + n + " bintang.";
+    var row = $("#sortStars");
+    row.innerHTML = "";
+    for (var i = 0; i < stars; i++) {
+      row.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>');
+    }
+    $("#sortResult").classList.remove("hidden");
+    $("#objHolder").innerHTML = "";
+    Sound.cheer();
+    burstAt($("#sortResult"));
+    Sound.speak("Permainan selesai. Kamu benar " + n + " dari " + this.total + ". Kerja bagus.");
+  }
+};
+
+$$("#sortPills .pill").forEach(function (p) {
+  p.addEventListener("click", function () {
+    primeAudio();
+    Sound.click();
+    SortGame.reset(p.getAttribute("data-smode"));
+    var txt = p.getAttribute("data-smode") === "bentuk" ? "Kita kelompokkan berdasarkan bentuk."
+      : p.getAttribute("data-smode") === "warna" ? "Kita kelompokkan berdasarkan warna."
+      : "Kita kelompokkan berdasarkan ukuran.";
+    Sound.speak(txt);
+  });
+});
+$("#btnSortAgain").addEventListener("click", function () {
+  primeAudio();
+  Sound.click();
+  SortGame.reset();
+  Sound.speak("Ayo main lagi. Seret benda ke keranjang yang tepat.");
+});
+
+/* ============================================================
+   TAB SIMULASI
+============================================================ */
+function switchSim(name) {
+  window.__curSim = name;
+  $$(".sim-sub .pill").forEach(function (p) {
+    p.classList.toggle("active", p.getAttribute("data-simtab") === name);
+  });
+  $("#sim-susun").classList.toggle("hidden", name !== "susun");
+  $("#sim-kelompok").classList.toggle("hidden", name !== "kelompok");
+  if (name === "susun" && !Compose.merged) {
+    Compose.reset(false);
+  }
+  if (name === "kelompok") {
+    if (SortGame.finished) SortGame.reset();
+    else SortGame.renderRound();
+  }
+}
+$$(".sim-sub .pill").forEach(function (p) {
+  p.addEventListener("click", function () {
+    primeAudio();
+    Sound.click();
+    switchSim(p.getAttribute("data-simtab"));
+    Sound.speak(p.getAttribute("data-simtab") === "susun"
+      ? "Ayo susun dua segitiga menjadi bentuk baru."
+      : "Ayo kelompokkan benda ke keranjang yang tepat.");
+  });
+});
+
+Compose.init();
+SortGame.reset();
+</script>
+<script>
+"use strict";
+
+/* ============================================================
+   GAMBAR FIGUR (dihitung lewat atribut data-s)
+============================================================ */
+function houseSVG() {
+  return '<svg viewBox="0 0 360 240" role="img" aria-label="Gambar rumah">' +
+    '<circle cx="46" cy="46" r="26" fill="#ffd23f" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M14 210 q46 -14 92 0 t92 0 t92 0" fill="none" stroke="#7ed957" stroke-width="9" stroke-linecap="round"/>' +
+    '<circle cx="250" cy="34" r="12" fill="#ffffff" stroke="#3b3b64" stroke-width="4" data-s="lengkung"/>' +
+    '<circle cx="267" cy="14" r="9" fill="#ffffff" stroke="#3b3b64" stroke-width="4" data-s="lengkung"/>' +
+    '<rect x="236" y="54" width="28" height="54" rx="5" fill="#ffab5e" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<rect x="88" y="112" width="176" height="98" rx="8" fill="#ffe0b8" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<polygon points="72,114 280,114 176,42" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round" data-s="segitiga"/>' +
+    '<rect x="110" y="150" width="48" height="60" rx="6" fill="#b28dff" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<circle cx="216" cy="150" r="26" fill="#dff3ff" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M216 124 v52 M190 150 h52" stroke="#3b3b64" stroke-width="4"/>' +
+    "</svg>";
+}
+function trainSVG() {
+  return '<svg viewBox="0 0 360 240" role="img" aria-label="Gambar kereta">' +
+    '<path d="M12 206 h336" stroke="#7ed957" stroke-width="9" stroke-linecap="round"/>' +
+    '<circle cx="96" cy="54" r="13" fill="#ffffff" stroke="#3b3b64" stroke-width="4" data-s="lengkung"/>' +
+    '<circle cx="114" cy="32" r="10" fill="#ffffff" stroke="#3b3b64" stroke-width="4" data-s="lengkung"/>' +
+    '<rect x="76" y="64" width="30" height="40" rx="5" fill="#ffab5e" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<rect x="56" y="100" width="152" height="66" rx="8" fill="#6ec6ff" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<rect x="206" y="64" width="90" height="102" rx="8" fill="#ffd23f" stroke="#3b3b64" stroke-width="5" data-s="segiempat"/>' +
+    '<polygon points="196,66 306,66 251,28" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round" data-s="segitiga"/>' +
+    '<polygon points="56,100 22,166 56,166" fill="#7ed957" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round" data-s="segitiga"/>' +
+    '<circle cx="251" cy="100" r="21" fill="#dff3ff" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M251 79 v42 M230 100 h42" stroke="#3b3b64" stroke-width="4"/>' +
+    '<circle cx="94" cy="182" r="24" fill="#4a4a75" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M94 164 v36 M76 182 h36 M81 169 l26 26 M107 169 l-26 26" stroke="#8f8fb8" stroke-width="3"/>' +
+    '<circle cx="154" cy="182" r="24" fill="#4a4a75" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M154 164 v36 M136 182 h36 M141 169 l26 26 M167 169 l-26 26" stroke="#8f8fb8" stroke-width="3"/>' +
+    '<circle cx="251" cy="182" r="24" fill="#4a4a75" stroke="#3b3b64" stroke-width="5" data-s="lengkung"/>' +
+    '<path d="M251 164 v36 M233 182 h36 M238 169 l26 26 M264 169 l-26 26" stroke="#8f8fb8" stroke-width="3"/>' +
+    "</svg>";
+}
+
+/* ============================================================
+   PERMAINAN HITUNG BENTUK
+============================================================ */
+var SHAPE_NAMES = {
+  lengkung: "bentuk lengkung",
+  segitiga: "segitiga",
+  segiempat: "segi empat"
+};
+
+var CountGame = {
+  qs: [],
+  idx: 0,
+  value: 0,
+  score: 0,
+  firstTry: true,
+  running: false,
+  locked: false,
+
+  ensure: function () {
+    if (!this.running) this.start();
+  },
+
+  start: function () {
+    this.running = true;
+    this.idx = 0;
+    this.score = 0;
+    this.firstTry = true;
+    this.locked = false;
+    this.qs = shuffle([
+      { fig: "rumah", s: "lengkung" },
+      { fig: "rumah", s: "segitiga" },
+      { fig: "rumah", s: "segiempat" },
+      { fig: "kereta", s: "lengkung" },
+      { fig: "kereta", s: "segiempat" },
+      { fig: "kereta", s: "segitiga" }
+    ]);
+    $("#countResult").classList.add("hidden");
+    $("#countScore").textContent = "0";
+    this.render(false);
+  },
+
+  figSVG: function (name) {
+    return name === "rumah" ? houseSVG() : trainSVG();
+  },
+
+  render: function (speakIt) {
+    var self = this;
+    if (this.idx >= this.qs.length) { this.finish(); return; }
+    var q = this.qs[this.idx];
+    $("#figureBox").innerHTML = this.figSVG(q.fig);
+    $("#countTag").textContent = "Soal " + (this.idx + 1) + " dari " + this.qs.length;
+    $("#countAsk").textContent = "Ada berapa " + SHAPE_NAMES[q.s] + " pada gambar?";
+    this.value = 0;
+    $("#cntNum").textContent = "0";
+    $("#cntCheck").disabled = false;
+    if (speakIt) Sound.speak("Soal " + (this.idx + 1) + ". Ada berapa " + SHAPE_NAMES[q.s] + " pada gambar?");
+    if (this.idx === 0) {
+      $("#figureBox").animate && $("#figureBox").animate(
+        [{ transform: "scale(.96)", opacity: .5 }, { transform: "scale(1)", opacity: 1 }],
+        { duration: 350, easing: "ease-out" }
+      );
+    }
+  },
+
+  count: function () {
+    var q = this.qs[this.idx];
+    return $$('#figureBox [data-s="' + q.s + '"]').length;
+  },
+
+  bump: function (d) {
+    primeAudio();
+    this.value = Math.max(0, Math.min(12, this.value + d));
+    $("#cntNum").textContent = String(this.value);
+    Sound.tone(d > 0 ? 620 : 480, 0.07, { type: "triangle", vol: 0.1 });
+    var box = $("#cntNum");
+    box.animate && box.animate([{ transform: "scale(1)" }, { transform: "scale(1.14)" }, { transform: "scale(1)" }], { duration: 220 });
+  },
+
+  check: function () {
+    if (this.locked) return;
+    primeAudio();
+    var self = this;
+    var q = this.qs[this.idx];
+    var right = this.count();
+    if (this.value === right) {
+      this.locked = true;
+      if (this.firstTry) { this.score++; addStars(1); }
+      $("#countScore").textContent = String(this.score);
+      Sound.correct();
+      burstAt($("#cntNum"));
+      Sound.speak(this.firstTry ? "Hebat, jawabanmu benar." : "Benar, bagus sudah mencoba lagi.");
+      $("#cntCheck").disabled = true;
+      setTimeout(function () {
+        self.idx++;
+        self.firstTry = true;
+        self.locked = false;
+        self.render(true);
+      }, 1300);
+    } else {
+      this.firstTry = false;
+      Sound.wrong();
+      Sound.speak("Belum tepat. Hitung pelan-pelan ya.");
+      var box = $("#cntNum");
+      box.animate && box.animate(
+        [{ transform: "translateX(0)" }, { transform: "translateX(-10px)" }, { transform: "translateX(10px)" }, { transform: "translateX(0)" }],
+        { duration: 400 }
+      );
+    }
+  },
+
+  finish: function () {
+    this.running = false;
+    var n = this.score;
+    var stars = n >= 5 ? 3 : (n >= 3 ? 2 : 1);
+    $("#countResultText").textContent = "Kamu mengumpulkan " + n + " bintang dari " + this.qs.length + " soal.";
+    var row = $("#countStars");
+    row.innerHTML = "";
+    for (var i = 0; i < stars; i++) {
+      row.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>');
+    }
+    $("#countResult").classList.remove("hidden");
+    Sound.cheer();
+    burstAt($("#countResult"));
+    Sound.speak("Permainan selesai. Kamu mendapat " + n + " bintang. Kerja bagus.");
+  }
+};
+
+$("#cntMinus").addEventListener("click", function () { CountGame.bump(-1); });
+$("#cntPlus").addEventListener("click", function () { CountGame.bump(1); });
+$("#cntCheck").addEventListener("click", function () { CountGame.check(); });
+$("#btnCountAgain").addEventListener("click", function () {
+  primeAudio();
+  Sound.click();
+  CountGame.start();
+  Sound.speak("Ayo main lagi. Hitung bentuk pada gambar.");
+});
+
+/* ============================================================
+   EVALUASI
+============================================================ */
+function bigArt(id) {
+  return '<svg class="art" viewBox="0 0 100 100"><use href="' + id + '"/></svg>';
+}
+function twinTrianglesSVG() {
+  return '<svg viewBox="0 0 320 130" role="img" aria-label="Dua segitiga menjadi segi empat">' +
+    '<polygon points="16,116 16,40 88,116" fill="#ff8fb1" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>' +
+    '<polygon points="106,116 178,116 178,40" fill="#6ec6ff" stroke="#3b3b64" stroke-width="5" stroke-linejoin="round"/>' +
+    '<path d="M196 78 h34" stroke="#3b3b64" stroke-width="6" stroke-linecap="round"/>' +
+    '<polygon points="236,78 222,70 222,86" fill="#3b3b64"/>' +
+    '<rect x="250" y="38" width="56" height="56" rx="8" fill="#ffd23f" stroke="#3b3b64" stroke-width="5"/>' +
+    '<path d="M250 38 L306 94" stroke="#3b3b64" stroke-width="4" stroke-dasharray="8 7"/>' +
+    "</svg>";
+}
+
+var QUIZ = [
+  {
+    ask: "Bentuk apakah yang kamu lihat ini?",
+    visual: '<div style="text-align:center"><svg viewBox="0 0 100 100" style="width:170px;height:170px"><use href="#sh-leng"/></svg></div>',
+    type: "choice",
+    choices: [
+      { t: "Bentuk lengkung", right: true },
+      { t: "Segitiga" },
+      { t: "Segi empat" }
+    ]
+  },
+  {
+    ask: "Benda manakah yang berbentuk segitiga?",
+    type: "choice",
+    choices: [
+      { t: "Piring", art: "#ob-piring" },
+      { t: "Tenda", art: "#ob-tenda", right: true },
+      { t: "Buku", art: "#ob-buku" }
+    ]
+  },
+  {
+    ask: "Kue lupis berbentuk apa?",
+    visual: '<div style="text-align:center"><svg viewBox="0 0 100 100" style="width:170px;height:170px"><use href="#ob-lupis"/></svg></div>',
+    type: "choice",
+    choices: [
+      { t: "Bentuk lengkung" },
+      { t: "Segitiga", right: true },
+      { t: "Segi empat" }
+    ]
+  },
+  {
+    ask: "Dua segitiga sama besar jika disusun bersama akan menjadi...",
+    visual: twinTrianglesSVG(),
+    type: "choice",
+    choices: [
+      { t: "Bentuk lengkung" },
+      { t: "Segi empat", right: true },
+      { t: "Tetap kecil" }
+    ]
+  },
+  {
+    ask: "Ada berapa segitiga pada gambar rumah ini?",
+    visual: houseSVG(),
+    type: "number",
+    answer: 1,
+    options: [0, 1, 2, 3]
+  },
+  {
+    ask: "Benda manakah yang satu warna dengan apel merah?",
+    visual: '<div style="text-align:center"><svg viewBox="0 0 100 100" style="width:150px;height:150px"><use href="#ob-apel"/></svg><p style="font-weight:bold;margin-top:4px">Apel merah</p></div>',
+    type: "choice",
+    choices: [
+      { t: "Balon", art: "#ob-balon-merah", right: true },
+      { t: "Balon", art: "#ob-balon-kuning" },
+      { t: "Pisang", art: "#ob-pisang" }
+    ]
+  },
+  {
+    ask: "Benda manakah yang satu kelompok bentuk dengan piring?",
+    visual: '<div style="text-align:center"><svg viewBox="0 0 100 100" style="width:150px;height:150px"><use href="#ob-piring"/></svg><p style="font-weight:bold;margin-top:4px">Piring</p></div>',
+    type: "choice",
+    choices: [
+      { t: "Telur", art: "#ob-telur", right: true },
+      { t: "Tenda", art: "#ob-tenda" },
+      { t: "Pintu", art: "#ob-pintu" }
+    ]
+  }
+];
+
+var Quiz = {
+  idx: 0,
+  score: 0,
+  firstTry: true,
+  started: false,
+  locked: false,
+
+  ensure: function () {
+    if (!this.started) this.start();
+  },
+
+  start: function () {
+    this.started = true;
+    this.idx = 0;
+    this.score = 0;
+    this.firstTry = true;
+    this.locked = false;
+    $("#quizDone").classList.add("hidden");
+    $("#quizBody").classList.remove("hidden");
+    this.buildDots();
+    this.render(false);
+  },
+
+  buildDots: function () {
+    var d = $("#quizDots");
+    d.innerHTML = "";
+    for (var i = 0; i < QUIZ.length; i++) d.insertAdjacentHTML("beforeend", "<i></i>");
+    this.updateDots();
+  },
+
+  updateDots: function () {
+    $$("#quizDots i").forEach(function (el, i) {
+      el.classList.toggle("now", i === Quiz.idx);
+      el.classList.toggle("on", i < Quiz.idx);
+    });
+  },
+
+  render: function (speakIt) {
+    var self = this;
+    if (this.idx >= QUIZ.length) { this.finish(); return; }
+    var q = QUIZ[this.idx];
+    this.updateDots();
+    this.locked = false;
+    var html = '<div class="q-card" style="border-color:var(--blue)">' +
+      '<span class="q-tag" style="background:var(--blue)">Soal ' + (this.idx + 1) + " dari " + QUIZ.length + "</span>" +
+      "<h3>" + q.ask + "</h3>";
+    if (q.visual) html += '<div class="q-visual">' + q.visual + "</div>";
+    if (q.type === "choice") {
+      html += '<div class="choices">';
+      q.choices.forEach(function (c, i) {
+        html += '<button class="choice" data-ci="' + i + '">' +
+          (c.art ? bigArt(c.art) : "") + "<span>" + c.t + "</span></button>";
+      });
+      html += "</div>";
+    } else {
+      html += '<div class="num-choices">';
+      q.options.forEach(function (o) {
+        html += '<button class="num-choice" data-n="' + o + '">' + o + "</button>";
+      });
+      html += "</div>";
+    }
+    html += "</div>";
+    $("#quizBody").innerHTML = html;
+
+    $$("#quizBody .choice").forEach(function (btn) {
+      btn.addEventListener("click", function () { self.answerChoice(btn, q); });
+    });
+    $$("#quizBody .num-choice").forEach(function (btn) {
+      btn.addEventListener("click", function () { self.answerNumber(btn, q); });
+    });
+
+    if (speakIt) Sound.speak("Soal " + (this.idx + 1) + ". " + q.ask);
+  },
+
+  correctFlow: function (el) {
+    var self = this;
+    this.locked = true;
+    if (this.firstTry) { this.score++; addStars(1); }
+    el.classList.add("right");
+    Sound.correct();
+    burstAt(el);
+    Sound.speak(this.firstTry ? "Hebat, jawabanmu benar." : "Benar, bagus sudah mencoba lagi.");
+    setTimeout(function () {
+      self.idx++;
+      self.firstTry = true;
+      self.render(true);
+    }, 1250);
+  },
+
+  wrongFlow: function (el) {
+    this.firstTry = false;
+    el.classList.add("wrong");
+    Sound.wrong();
+    Sound.speak("Jawaban belum tepat. Coba lagi.");
+    var target = el;
+    setTimeout(function () { target.classList.remove("wrong"); }, 750);
+  },
+
+  answerChoice: function (btn, q) {
+    if (this.locked) return;
+    primeAudio();
+    var i = parseInt(btn.getAttribute("data-ci"), 10);
+    if (q.choices[i].right) this.correctFlow(btn);
+    else this.wrongFlow(btn);
+  },
+
+  answerNumber: function (btn, q) {
+    if (this.locked) return;
+    primeAudio();
+    var v = parseInt(btn.getAttribute("data-n"), 10);
+    if (v === q.answer) this.correctFlow(btn);
+    else this.wrongFlow(btn);
+  },
+
+  finish: function () {
+    var n = this.score;
+    var total = QUIZ.length;
+    var stars = n >= 6 ? 3 : (n >= 4 ? 2 : 1);
+    $("#quizBody").classList.add("hidden");
+    $("#quizDone").classList.remove("hidden");
+    $("#quizScore").textContent = n + "/" + total;
+    var title = n >= total ? "Sempurna" : (n >= 6 ? "Luar Biasa" : (n >= 4 ? "Kerja Bagus" : "Terus Berlatih"));
+    $("#quizTitle").textContent = title;
+    $("#quizMsg").textContent = "Kamu menjawab benar " + n + " dari " + total + " soal.";
+    var row = $("#quizStars");
+    row.innerHTML = "";
+    for (var i = 0; i < stars; i++) {
+      row.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 24 24"><use href="#ic-star"/></svg>');
+    }
+    this.updateDots();
+    Sound.cheer();
+    burstAt($("#quizDone"));
+    Sound.speak(title + ". Kamu menjawab benar " + n + " dari " + total + " soal. Ayo isi catatanku.");
+  }
+};
+
+$("#btnQuizAgain").addEventListener("click", function () {
+  primeAudio();
+  Sound.click();
+  Quiz.start();
+  Sound.speak("Ayo kerjakan evaluasi dari awal. Kamu pasti bisa.");
+});
+
+$$(".check-item").forEach(function (item) {
+  item.addEventListener("click", function () {
+    primeAudio();
+    var on = item.classList.toggle("on");
+    if (on) { Sound.pop(); Sound.speak(item.textContent.trim()); }
+    else Sound.click();
+  });
+});
+
+/* ============================================================
+   INISIALISASI
+============================================================ */
+CountGame.start();
+Quiz.ensure();
+
+/* sapaan pertama saat halaman dibuka (butuh gestur pertama untuk audio) */
+document.addEventListener("pointerdown", function once() {
+  document.removeEventListener("pointerdown", once);
+  primeAudio();
+}, { once: true });
+
+</script>
+</body>
+</html>
